@@ -16,6 +16,13 @@
 		A5537C6A2C3FC92100E2A7D5 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5537C692C3FC92000E2A7D5 /* NetworkExtension.framework */; };
 		A5537C6D2C3FC92100E2A7D5 /* AppProxyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C6C2C3FC92100E2A7D5 /* AppProxyProvider.swift */; };
 		A5537C722C3FC92100E2A7D5 /* NetworkTrackerNetworkExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A5537C672C3FC92000E2A7D5 /* NetworkTrackerNetworkExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A5537C7F2C3FF31500E2A7D5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C7E2C3FF31500E2A7D5 /* MainViewModel.swift */; };
+		A5537C812C3FF51700E2A7D5 /* QueryInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C802C3FF51700E2A7D5 /* QueryInfoModel.swift */; };
+		A5537C882C3FFDF100E2A7D5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C872C3FFDF100E2A7D5 /* EmptyView.swift */; };
+		A5537C8A2C3FFEBA00E2A7D5 /* EmptyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C892C3FFEBA00E2A7D5 /* EmptyDataSource.swift */; };
+		A5537C8D2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C8C2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift */; };
+		A5537C8F2C40010800E2A7D5 /* UILabel+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */; };
+		A5537C932C40016100E2A7D5 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C922C40016100E2A7D5 /* UIView+Shadow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +64,13 @@
 		A5537C6C2C3FC92100E2A7D5 /* AppProxyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppProxyProvider.swift; sourceTree = "<group>"; };
 		A5537C6E2C3FC92100E2A7D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5537C6F2C3FC92100E2A7D5 /* NetworkTrackerNetworkExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NetworkTrackerNetworkExtension.entitlements; sourceTree = "<group>"; };
+		A5537C7E2C3FF31500E2A7D5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		A5537C802C3FF51700E2A7D5 /* QueryInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryInfoModel.swift; sourceTree = "<group>"; };
+		A5537C872C3FFDF100E2A7D5 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		A5537C892C3FFEBA00E2A7D5 /* EmptyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataSource.swift; sourceTree = "<group>"; };
+		A5537C8C2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+init.swift"; sourceTree = "<group>"; };
+		A5537C922C40016100E2A7D5 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +114,7 @@
 		A5537C4A2C3FC85400E2A7D5 /* NetworkTracker */ = {
 			isa = PBXGroup;
 			children = (
+				A5537C822C3FF6D500E2A7D5 /* Common */,
 				A5537C7A2C3FCA8100E2A7D5 /* Application */,
 				A5537C7D2C3FCACE00E2A7D5 /* Services */,
 				A5537C7C2C3FCAB200E2A7D5 /* Sources */,
@@ -129,6 +144,7 @@
 		A5537C772C3FC9D400E2A7D5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5537C802C3FF51700E2A7D5 /* QueryInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -136,6 +152,8 @@
 		A5537C782C3FC9DE00E2A7D5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A5537C8B2C3FFEEB00E2A7D5 /* Cell */,
+				A5537C862C3FFDDD00E2A7D5 /* EmptyState */,
 				A5537C4F2C3FC85400E2A7D5 /* MainViewController.swift */,
 			);
 			path = View;
@@ -144,6 +162,7 @@
 		A5537C792C3FC9E400E2A7D5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A5537C7E2C3FF31500E2A7D5 /* MainViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -172,9 +191,9 @@
 		A5537C7C2C3FCAB200E2A7D5 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A5537C772C3FC9D400E2A7D5 /* Model */,
 				A5537C792C3FC9E400E2A7D5 /* ViewModel */,
 				A5537C782C3FC9DE00E2A7D5 /* View */,
-				A5537C772C3FC9D400E2A7D5 /* Model */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -184,6 +203,40 @@
 			children = (
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		A5537C822C3FF6D500E2A7D5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A5537C832C3FF6DC00E2A7D5 /* Extension */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A5537C832C3FF6DC00E2A7D5 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */,
+				A5537C922C40016100E2A7D5 /* UIView+Shadow.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A5537C862C3FFDDD00E2A7D5 /* EmptyState */ = {
+			isa = PBXGroup;
+			children = (
+				A5537C872C3FFDF100E2A7D5 /* EmptyView.swift */,
+				A5537C892C3FFEBA00E2A7D5 /* EmptyDataSource.swift */,
+			);
+			path = EmptyState;
+			sourceTree = "<group>";
+		};
+		A5537C8B2C3FFEEB00E2A7D5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A5537C8C2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,9 +339,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5537C812C3FF51700E2A7D5 /* QueryInfoModel.swift in Sources */,
+				A5537C7F2C3FF31500E2A7D5 /* MainViewModel.swift in Sources */,
+				A5537C8A2C3FFEBA00E2A7D5 /* EmptyDataSource.swift in Sources */,
 				A5537C502C3FC85400E2A7D5 /* MainViewController.swift in Sources */,
+				A5537C932C40016100E2A7D5 /* UIView+Shadow.swift in Sources */,
 				A5537C562C3FC85400E2A7D5 /* NetworkTracker.xcdatamodeld in Sources */,
 				A5537C4C2C3FC85400E2A7D5 /* AppDelegate.swift in Sources */,
+				A5537C8D2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift in Sources */,
+				A5537C882C3FFDF100E2A7D5 /* EmptyView.swift in Sources */,
+				A5537C8F2C40010800E2A7D5 /* UILabel+init.swift in Sources */,
 				A5537C4E2C3FC85400E2A7D5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
