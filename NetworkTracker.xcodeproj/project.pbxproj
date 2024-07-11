@@ -23,6 +23,14 @@
 		A5537C8D2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C8C2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift */; };
 		A5537C8F2C40010800E2A7D5 /* UILabel+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */; };
 		A5537C932C40016100E2A7D5 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C922C40016100E2A7D5 /* UIView+Shadow.swift */; };
+		A5C1E8E12C401800009CF48B /* NSManagedObjectContext+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E02C401800009CF48B /* NSManagedObjectContext+Combine.swift */; };
+		A5C1E8E52C40184E009CF48B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E42C40184E009CF48B /* CoreDataStack.swift */; };
+		A5C1E8E62C40184E009CF48B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E42C40184E009CF48B /* CoreDataStack.swift */; };
+		A5C1E8E72C4018B6009CF48B /* NetworkTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5537C542C3FC85400E2A7D5 /* NetworkTracker.xcdatamodeld */; };
+		A5C1E8EA2C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E82C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift */; };
+		A5C1E8EB2C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */; };
+		A5C1E8EC2C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E82C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift */; };
+		A5C1E8ED2C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +79,10 @@
 		A5537C8C2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+init.swift"; sourceTree = "<group>"; };
 		A5537C922C40016100E2A7D5 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
+		A5C1E8E02C401800009CF48B /* NSManagedObjectContext+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Combine.swift"; sourceTree = "<group>"; };
+		A5C1E8E42C40184E009CF48B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		A5C1E8E82C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryInfoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryInfoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,9 +126,9 @@
 		A5537C4A2C3FC85400E2A7D5 /* NetworkTracker */ = {
 			isa = PBXGroup;
 			children = (
-				A5537C822C3FF6D500E2A7D5 /* Common */,
 				A5537C7A2C3FCA8100E2A7D5 /* Application */,
-				A5537C7D2C3FCACE00E2A7D5 /* Services */,
+				A5537C822C3FF6D500E2A7D5 /* Common */,
+				A5C1E8E22C40182D009CF48B /* Services */,
 				A5537C7C2C3FCAB200E2A7D5 /* Sources */,
 				A5537C7B2C3FCA9700E2A7D5 /* Resources */,
 			);
@@ -144,6 +156,7 @@
 		A5537C772C3FC9D400E2A7D5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5C1E8EE2C4018E3009CF48B /* Managed Objects */,
 				A5537C802C3FF51700E2A7D5 /* QueryInfoModel.swift */,
 			);
 			path = Model;
@@ -198,13 +211,6 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		A5537C7D2C3FCACE00E2A7D5 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		A5537C822C3FF6D500E2A7D5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +224,7 @@
 			children = (
 				A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */,
 				A5537C922C40016100E2A7D5 /* UIView+Shadow.swift */,
+				A5C1E8E02C401800009CF48B /* NSManagedObjectContext+Combine.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -237,6 +244,31 @@
 				A5537C8C2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		A5C1E8E22C40182D009CF48B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A5C1E8E32C401839009CF48B /* Core Data */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A5C1E8E32C401839009CF48B /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				A5C1E8E42C40184E009CF48B /* CoreDataStack.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		A5C1E8EE2C4018E3009CF48B /* Managed Objects */ = {
+			isa = PBXGroup;
+			children = (
+				A5C1E8E82C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift */,
+				A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */,
+			);
+			path = "Managed Objects";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,9 +373,13 @@
 			files = (
 				A5537C812C3FF51700E2A7D5 /* QueryInfoModel.swift in Sources */,
 				A5537C7F2C3FF31500E2A7D5 /* MainViewModel.swift in Sources */,
+				A5C1E8EA2C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift in Sources */,
+				A5C1E8EB2C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift in Sources */,
 				A5537C8A2C3FFEBA00E2A7D5 /* EmptyDataSource.swift in Sources */,
 				A5537C502C3FC85400E2A7D5 /* MainViewController.swift in Sources */,
 				A5537C932C40016100E2A7D5 /* UIView+Shadow.swift in Sources */,
+				A5C1E8E12C401800009CF48B /* NSManagedObjectContext+Combine.swift in Sources */,
+				A5C1E8E52C40184E009CF48B /* CoreDataStack.swift in Sources */,
 				A5537C562C3FC85400E2A7D5 /* NetworkTracker.xcdatamodeld in Sources */,
 				A5537C4C2C3FC85400E2A7D5 /* AppDelegate.swift in Sources */,
 				A5537C8D2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift in Sources */,
@@ -357,7 +393,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5C1E8E72C4018B6009CF48B /* NetworkTracker.xcdatamodeld in Sources */,
 				A5537C6D2C3FC92100E2A7D5 /* AppProxyProvider.swift in Sources */,
+				A5C1E8EC2C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift in Sources */,
+				A5C1E8ED2C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift in Sources */,
+				A5C1E8E62C40184E009CF48B /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
