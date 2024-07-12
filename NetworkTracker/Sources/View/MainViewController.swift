@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import NetworkExtension
 
 final class MainViewController: UIViewController {
     
@@ -40,6 +41,8 @@ final class MainViewController: UIViewController {
     
     private var cancellables: Set<AnyCancellable> = []
     
+    var providerManager: NEAppProxyProviderManager!
+    
     init(mainScreenViewModel: MainScreenViewModelProtocol) {
         self.mainScreenViewModel = mainScreenViewModel
         super.init(nibName: nil, bundle: nil)
@@ -57,12 +60,15 @@ final class MainViewController: UIViewController {
         configureCollectionView()
         bindViewModel()
         createDataSource()
-        mainScreenViewModel.fetchItems()
+        mainScreenViewModel.fetchItemsFromCoreData()
     }
 
     private func configureView() {
         title = "Queries"
         view.backgroundColor = .tertiarySystemBackground
+        
+        let barButtonImage = UIImage(systemName: "menubar.arrow.down.rectangle")?.withTintColor(.black).withRenderingMode(.alwaysOriginal)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: barButtonImage, style: .plain, target: self, action: #selector(addMockCareDataModels))
     }
     
     private func configureCollectionView() {
@@ -87,6 +93,50 @@ final class MainViewController: UIViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(items)
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+//MARK: - Mock request to google.com
+extension MainViewController {
+    @objc
+    func makeGoogleRequest() {
+        guard let url = URL(string: "https://www.google.com") else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Error making request: \(error)")
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                print("Unexpected response")
+                return
+            }
+            
+            if let data = data, let html = String(data: data, encoding: .utf8) {
+                print("Received response: \(html.prefix(100))...") // Print the first 100 characters of the response
+            }
+        }
+        
+        task.resume()
+    }
+    
+    @objc
+    func addMockCareDataModels() {
+        let context = CoreDataStack.shared.context
+        for i in 1...3 {
+      
+            let newRequest = QueryInfoEntity(context: context)
+            newRequest.date = Date()
+            newRequest.text = "requestText"
+            newRequest.link = "url\(String(i))"
+            
+            do {
+                try context.save()
+            } catch {
+                print("Failed to save request: \(error)")
+            }
+        }
     }
 }
 

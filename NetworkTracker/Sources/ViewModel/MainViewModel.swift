@@ -13,7 +13,7 @@ import CoreData
 protocol MainScreenViewModelProtocol {
     var items: PassthroughSubject<[QueryInfoModel], Never> { get }
     
-    func fetchItems()
+    func fetchItemsFromCoreData()
 }
 
 final class MainScreenViewModel: MainScreenViewModelProtocol, ObservableObject {
@@ -38,6 +38,7 @@ final class MainScreenViewModel: MainScreenViewModelProtocol, ObservableObject {
             .map { queryInfoEntities in
                 queryInfoEntities.compactMap { queryInfoEntity in
                     let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM-dd-yyyy"
                     let date = dateFormatter.string(from: queryInfoEntity.date ?? Date())
                     let model = QueryInfoModel(text: queryInfoEntity.text ?? "", date: date, url: queryInfoEntity.link)
                     return model

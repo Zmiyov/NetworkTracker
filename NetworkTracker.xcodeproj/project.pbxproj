@@ -31,6 +31,13 @@
 		A5C1E8EB2C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */; };
 		A5C1E8EC2C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E82C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift */; };
 		A5C1E8ED2C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */; };
+		A5CB71D42C411D4200E0367E /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5537C692C3FC92000E2A7D5 /* NetworkExtension.framework */; };
+		A5CB71D72C411D4200E0367E /* FilterDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB71D62C411D4200E0367E /* FilterDataProvider.swift */; };
+		A5CB71DC2C411D4200E0367E /* NTFilterDataExt.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A5CB71D32C411D4200E0367E /* NTFilterDataExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A5CB71E02C411D5200E0367E /* NetworkTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5537C542C3FC85400E2A7D5 /* NetworkTracker.xcdatamodeld */; };
+		A5CB71E12C411D5600E0367E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E42C40184E009CF48B /* CoreDataStack.swift */; };
+		A5CB71E22C411D6100E0367E /* QueryInfoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E82C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift */; };
+		A5CB71E32C411D6300E0367E /* QueryInfoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +48,13 @@
 			remoteGlobalIDString = A5537C662C3FC92000E2A7D5;
 			remoteInfo = NetworkTrackerNetworkExtension;
 		};
+		A5CB71DA2C411D4200E0367E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5537C402C3FC85400E2A7D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5CB71D22C411D4200E0367E;
+			remoteInfo = NTFilterDataExt;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,6 +64,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				A5CB71DC2C411D4200E0367E /* NTFilterDataExt.appex in Embed Foundation Extensions */,
 				A5537C722C3FC92100E2A7D5 /* NetworkTrackerNetworkExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
@@ -83,6 +98,10 @@
 		A5C1E8E42C40184E009CF48B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A5C1E8E82C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryInfoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryInfoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A5CB71D32C411D4200E0367E /* NTFilterDataExt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NTFilterDataExt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5CB71D62C411D4200E0367E /* FilterDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDataProvider.swift; sourceTree = "<group>"; };
+		A5CB71D82C411D4200E0367E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5CB71D92C411D4200E0367E /* NTFilterDataExt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NTFilterDataExt.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +120,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5CB71D02C411D4200E0367E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5CB71D42C411D4200E0367E /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -109,6 +136,7 @@
 			children = (
 				A5537C4A2C3FC85400E2A7D5 /* NetworkTracker */,
 				A5537C6B2C3FC92100E2A7D5 /* NetworkTrackerNetworkExtension */,
+				A5CB71D52C411D4200E0367E /* NTFilterDataExt */,
 				A5537C682C3FC92000E2A7D5 /* Frameworks */,
 				A5537C492C3FC85400E2A7D5 /* Products */,
 			);
@@ -119,6 +147,7 @@
 			children = (
 				A5537C482C3FC85400E2A7D5 /* NetworkTracker.app */,
 				A5537C672C3FC92000E2A7D5 /* NetworkTrackerNetworkExtension.appex */,
+				A5CB71D32C411D4200E0367E /* NTFilterDataExt.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -271,6 +300,16 @@
 			path = "Managed Objects";
 			sourceTree = "<group>";
 		};
+		A5CB71D52C411D4200E0367E /* NTFilterDataExt */ = {
+			isa = PBXGroup;
+			children = (
+				A5CB71D62C411D4200E0367E /* FilterDataProvider.swift */,
+				A5CB71D82C411D4200E0367E /* Info.plist */,
+				A5CB71D92C411D4200E0367E /* NTFilterDataExt.entitlements */,
+			);
+			path = NTFilterDataExt;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -287,6 +326,7 @@
 			);
 			dependencies = (
 				A5537C712C3FC92100E2A7D5 /* PBXTargetDependency */,
+				A5CB71DB2C411D4200E0367E /* PBXTargetDependency */,
 			);
 			name = NetworkTracker;
 			productName = NetworkTracker;
@@ -310,6 +350,23 @@
 			productReference = A5537C672C3FC92000E2A7D5 /* NetworkTrackerNetworkExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		A5CB71D22C411D4200E0367E /* NTFilterDataExt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5CB71DF2C411D4200E0367E /* Build configuration list for PBXNativeTarget "NTFilterDataExt" */;
+			buildPhases = (
+				A5CB71CF2C411D4200E0367E /* Sources */,
+				A5CB71D02C411D4200E0367E /* Frameworks */,
+				A5CB71D12C411D4200E0367E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NTFilterDataExt;
+			productName = NTFilterDataExt;
+			productReference = A5CB71D32C411D4200E0367E /* NTFilterDataExt.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -324,6 +381,9 @@
 						CreatedOnToolsVersion = 15.4;
 					};
 					A5537C662C3FC92000E2A7D5 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					A5CB71D22C411D4200E0367E = {
 						CreatedOnToolsVersion = 15.4;
 					};
 				};
@@ -343,6 +403,7 @@
 			targets = (
 				A5537C472C3FC85400E2A7D5 /* NetworkTracker */,
 				A5537C662C3FC92000E2A7D5 /* NetworkTrackerNetworkExtension */,
+				A5CB71D22C411D4200E0367E /* NTFilterDataExt */,
 			);
 		};
 /* End PBXProject section */
@@ -358,6 +419,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A5537C652C3FC92000E2A7D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5CB71D12C411D4200E0367E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -401,6 +469,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5CB71CF2C411D4200E0367E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5CB71E12C411D5600E0367E /* CoreDataStack.swift in Sources */,
+				A5CB71E22C411D6100E0367E /* QueryInfoEntity+CoreDataClass.swift in Sources */,
+				A5CB71D72C411D4200E0367E /* FilterDataProvider.swift in Sources */,
+				A5CB71E32C411D6300E0367E /* QueryInfoEntity+CoreDataProperties.swift in Sources */,
+				A5CB71E02C411D5200E0367E /* NetworkTracker.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -408,6 +488,11 @@
 			isa = PBXTargetDependency;
 			target = A5537C662C3FC92000E2A7D5 /* NetworkTrackerNetworkExtension */;
 			targetProxy = A5537C702C3FC92100E2A7D5 /* PBXContainerItemProxy */;
+		};
+		A5CB71DB2C411D4200E0367E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5CB71D22C411D4200E0367E /* NTFilterDataExt */;
+			targetProxy = A5CB71DA2C411D4200E0367E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -613,6 +698,7 @@
 				INFOPLIST_FILE = NetworkTrackerNetworkExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NetworkTrackerNetworkExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -639,6 +725,7 @@
 				INFOPLIST_FILE = NetworkTrackerNetworkExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NetworkTrackerNetworkExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -646,6 +733,60 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pysarenkodev.NetworkTracker.NetworkTrackerNetworkExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A5CB71DD2C411D4200E0367E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NTFilterDataExt/NTFilterDataExt.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H32J47ML7Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NTFilterDataExt/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NTFilterDataExt;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pysarenkodev.NetworkTracker.NTFilterDataExt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A5CB71DE2C411D4200E0367E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NTFilterDataExt/NTFilterDataExt.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H32J47ML7Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NTFilterDataExt/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NTFilterDataExt;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pysarenkodev.NetworkTracker.NTFilterDataExt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -680,6 +821,15 @@
 			buildConfigurations = (
 				A5537C742C3FC92100E2A7D5 /* Debug */,
 				A5537C752C3FC92100E2A7D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5CB71DF2C411D4200E0367E /* Build configuration list for PBXNativeTarget "NTFilterDataExt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5CB71DD2C411D4200E0367E /* Debug */,
+				A5CB71DE2C411D4200E0367E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -57,8 +57,12 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "0"
+         BundleIdentifier = "com.pysarenkodev.NetworkTracker"
+         RemotePath = "/var/containers/Bundle/Application/7F93C25A-F82C-4002-8F7F-95C8E0061288/NetworkTracker.app">
+      </RemoteRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A5537C472C3FC85400E2A7D5"
@@ -66,7 +70,7 @@
             BlueprintName = "NetworkTracker"
             ReferencedContainer = "container:NetworkTracker.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

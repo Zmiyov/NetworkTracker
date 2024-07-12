@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>NTFilterDataExt.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>NetworkTracker.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>A5537C662C3FC92000E2A7D5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A5DCB8642C404AFE0036D2A6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
