@@ -15,7 +15,8 @@ extension QueryInfoEntity {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<QueryInfoEntity> {
         return NSFetchRequest<QueryInfoEntity>(entityName: "QueryInfoEntity")
     }
-
+    
+    @NSManaged public var id: UUID?
     @NSManaged public var date: Date?
     @NSManaged public var link: String?
     @NSManaged public var text: String?

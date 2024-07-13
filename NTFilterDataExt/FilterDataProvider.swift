@@ -6,14 +6,12 @@
 //
 
 import NetworkExtension
-import CoreData
+//import CoreData
 import OSLog
 
 class FilterDataProvider: NEFilterDataProvider {
     
     private let log = OSLog(subsystem: "com.pysarenkodev.NTFilterDataExt", category: "general")
-    
-    let coreDataStack = CoreDataStack.shared
     
     override init() {
         os_log("Proxy init", log: log)
@@ -35,33 +33,19 @@ class FilterDataProvider: NEFilterDataProvider {
         if let url = flow.url, url.absoluteString.contains("google.com") {
             // Save the request details to Core Data
             os_log("Handling new flow", log: log)
-            saveRequest(url: url)
+            saveRequestToDatabase(request: url)
+            return .allow()
         } else {
             os_log("No URL found in flow.", log: log)
+            return .allow()
         }
-        return .allow()
     }
     
-    func saveRequest(url: URL) {
-        // Extract the query from the URL
-        let query = url.query ?? ""
-        
-        // Get the current date
-        let currentDate = Date()
-        os_log("Saving request", log: log)
-        
-        // Save to Core Data
-        let context = coreDataStack.context
-        let request = QueryInfoEntity(context: context)
-        request.date = currentDate
-        request.text = query
-        request.link = url.absoluteString
-        
-        do {
-            try context.save()
-            os_log("Request saved successfully in filter.", log: log)
-        } catch {
-            os_log("Failed to save request in filter", log: log)
-        }
+    private func saveRequestToDatabase(request: URL) {
+        let query = request.query ?? "No query"
+        let link = request.absoluteString
+        CoreDataManager.shared.addRequest(requestText: query, requestDate: Date(), websiteLink: link)
+        os_log("Saved request to database", log: log)
     }
+
 }

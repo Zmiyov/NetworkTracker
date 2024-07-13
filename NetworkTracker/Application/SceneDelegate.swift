@@ -38,8 +38,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             case .none:
                 if NEFilterManager.shared().providerConfiguration == nil {
                     let newConfiguration = NEFilterProviderConfiguration()
-                    newConfiguration.organization = "Monorail"
                     newConfiguration.filterBrowsers = true
+                    newConfiguration.username = "UserName"
+                    newConfiguration.organization = "NT"
                     NEFilterManager.shared().providerConfiguration = newConfiguration
                 }
                 
@@ -57,26 +58,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func makeATT() {
         
-        if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization { status in
-                switch status {
-                case .authorized:
-                    print("Authorized")
+        ATTrackingManager.requestTrackingAuthorization { status in
+            switch status {
+            case .authorized:
+                print("Authorized")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.configureFilter()
-                case .denied:
-                    print("Denied")
-                case .notDetermined:
-                    print("Not Determined")
-                    Task {
-                        await MainActor.run {
-                            self.makeATT()
-                        }
-                    }
-                case .restricted:
-                    print("Restricted")
-                @unknown default:
-                    print("Unknown")
                 }
+            case .denied:
+                print("Denied")
+            case .notDetermined:
+                print("Not Determined")
+                Task {
+                    await MainActor.run {
+                        self.makeATT()
+                    }
+                }
+            case .restricted:
+                print("Restricted")
+            @unknown default:
+                print("Unknown")
             }
         }
     }

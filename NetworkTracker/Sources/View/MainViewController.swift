@@ -94,49 +94,15 @@ final class MainViewController: UIViewController {
         snapshot.appendItems(items)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
+
 }
 
-//MARK: - Mock request to google.com
+//MARK: - Mock
+
 extension MainViewController {
     @objc
-    func makeGoogleRequest() {
-        guard let url = URL(string: "https://www.google.com") else { return }
-        
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                print("Error making request: \(error)")
-                return
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                print("Unexpected response")
-                return
-            }
-            
-            if let data = data, let html = String(data: data, encoding: .utf8) {
-                print("Received response: \(html.prefix(100))...") // Print the first 100 characters of the response
-            }
-        }
-        
-        task.resume()
-    }
-    
-    @objc
     func addMockCareDataModels() {
-        let context = CoreDataStack.shared.context
-        for i in 1...3 {
-      
-            let newRequest = QueryInfoEntity(context: context)
-            newRequest.date = Date()
-            newRequest.text = "requestText"
-            newRequest.link = "url\(String(i))"
-            
-            do {
-                try context.save()
-            } catch {
-                print("Failed to save request: \(error)")
-            }
-        }
+        CoreDataManager.shared.addRequest(requestText: "requestText", requestDate: Date(), websiteLink: "url")
     }
 }
 
@@ -148,6 +114,7 @@ extension MainViewController {
         dataSource = EmptyableDiffableDataSource<Section, QueryInfoModel>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, infoModel) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainScreenCellIdentifiers.queriesInfoListCell.rawValue, for: indexPath) as? InfoCollectionViewCell
             cell?.configure(with: infoModel)
+            cell?.delegate = self
             return cell
         }, emptyStateView: EmptyView())
     }
@@ -164,6 +131,14 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.width / 3)
+    }
+}
+
+//MARK: - MyCollectionViewCellDelegate
+
+extension MainViewController: MyCollectionViewCellDelegate {
+    func didTapButton(in cell: InfoCollectionViewCell, id: UUID) {
+        mainScreenViewModel.deleteItem(with: id)
     }
 }
 

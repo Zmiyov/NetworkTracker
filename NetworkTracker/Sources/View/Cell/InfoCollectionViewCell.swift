@@ -7,11 +7,22 @@
 
 import UIKit
 
+protocol MyCollectionViewCellDelegate: AnyObject {
+    func didTapButton(in cell: InfoCollectionViewCell, id: UUID)
+}
+
 final class InfoCollectionViewCell: UICollectionViewCell {
     
     private let textLabel = UILabel(font: UIFont.systemFont(ofSize: 17, weight: .bold))
     private let dateLabel = UILabel(font: UIFont.systemFont(ofSize: 15, weight: .semibold))
     private let linkLabel = UILabel(font: UIFont.systemFont(ofSize: 13, weight: .regular), alighment: .right)
+    
+    private let deleteButton: UIButton = {
+        var button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "delete"), for: .normal)
+        return button
+    }()
     
     private let containerView: UIView = {
         var view = UIView()
@@ -21,10 +32,15 @@ final class InfoCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    weak var delegate: MyCollectionViewCellDelegate?
+    
+    private var infoModelID: UUID?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
         setConstraints()
+        setupButton()
     }
 
     @available(*, unavailable)
@@ -45,6 +61,7 @@ final class InfoCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with info: QueryInfoModel) {
+        self.infoModelID = info.id
         self.textLabel.text = info.text
         self.dateLabel.text = info.date
         self.linkLabel.text = info.url ?? "No link data"
@@ -52,6 +69,15 @@ final class InfoCollectionViewCell: UICollectionViewCell {
     
     private func setupView() {
         contentView.backgroundColor = .clear
+    }
+    
+    private func setupButton() {
+        let deleteAction = UIAction { [weak self] action in
+            guard let self, let infoModelID else { return }
+            delegate?.didTapButton(in: self, id: infoModelID)
+        }
+        
+        deleteButton.addAction(deleteAction, for: .touchUpInside)
     }
     
     private func setConstraints() {
@@ -68,6 +94,14 @@ final class InfoCollectionViewCell: UICollectionViewCell {
             textLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 15),
             textLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
             textLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15)
+        ])
+        
+        containerView.addSubview(deleteButton)
+        NSLayoutConstraint.activate([
+            deleteButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 15),
+            deleteButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
+            deleteButton.widthAnchor.constraint(equalToConstant: 24),
+            deleteButton.heightAnchor.constraint(equalToConstant: 24)
         ])
 
         containerView.addSubview(dateLabel)
