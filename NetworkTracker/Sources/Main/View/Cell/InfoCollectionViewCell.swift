@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MyCollectionViewCellDelegate: AnyObject {
-    func didTapButton(in cell: InfoCollectionViewCell, id: UUID)
+    func didTapButton(in cell: InfoCollectionViewCell, id: String)
 }
 
 final class InfoCollectionViewCell: UICollectionViewCell {
@@ -34,7 +34,7 @@ final class InfoCollectionViewCell: UICollectionViewCell {
     
     weak var delegate: MyCollectionViewCellDelegate?
     
-    private var infoModelID: UUID?
+    private var infoModelID: String?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

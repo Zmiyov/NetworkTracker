@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		A507A9132C416E6E0086D823 /* QueryInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C802C3FF51700E2A7D5 /* QueryInfoModel.swift */; };
+		A532FA552C43DEEF001D9ECB /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5537C692C3FC92000E2A7D5 /* NetworkExtension.framework */; };
+		A532FA582C43DEEF001D9ECB /* FilterControlProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A532FA572C43DEEF001D9ECB /* FilterControlProvider.swift */; };
+		A532FA5D2C43DEEF001D9ECB /* NTFilterControlExt.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A532FA542C43DEEF001D9ECB /* NTFilterControlExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A532FA612C43DFBF001D9ECB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D790102C42833700AFCA2E /* CoreDataManager.swift */; };
+		A532FA622C43DFC4001D9ECB /* NetworkTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5537C542C3FC85400E2A7D5 /* NetworkTracker.xcdatamodeld */; };
+		A532FA632C43DFCA001D9ECB /* QueryInfoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E82C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift */; };
+		A532FA642C43DFCC001D9ECB /* QueryInfoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */; };
 		A5537C4C2C3FC85400E2A7D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C4B2C3FC85400E2A7D5 /* AppDelegate.swift */; };
 		A5537C4E2C3FC85400E2A7D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C4D2C3FC85400E2A7D5 /* SceneDelegate.swift */; };
 		A5537C502C3FC85400E2A7D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C4F2C3FC85400E2A7D5 /* MainViewController.swift */; };
@@ -21,6 +28,17 @@
 		A5537C8D2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C8C2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift */; };
 		A5537C8F2C40010800E2A7D5 /* UILabel+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */; };
 		A5537C932C40016100E2A7D5 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C922C40016100E2A7D5 /* UIView+Shadow.swift */; };
+		A59A2C2A2C44F9190025ECAD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C292C44F9190025ECAD /* Constants.swift */; };
+		A59A2C2B2C44F9190025ECAD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C292C44F9190025ECAD /* Constants.swift */; };
+		A59A2C2C2C44F9190025ECAD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C292C44F9190025ECAD /* Constants.swift */; };
+		A59A2C302C44FD690025ECAD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C2F2C44FD690025ECAD /* SettingsViewController.swift */; };
+		A59A2C342C44FEA80025ECAD /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C332C44FEA80025ECAD /* UIViewController+Alert.swift */; };
+		A59A2C352C4528E60025ECAD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C2F2C44FD690025ECAD /* SettingsViewController.swift */; };
+		A59A2C362C4528E60025ECAD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C2F2C44FD690025ECAD /* SettingsViewController.swift */; };
+		A59A2C372C4529070025ECAD /* UILabel+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */; };
+		A59A2C382C4529080025ECAD /* UILabel+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */; };
+		A59A2C392C4529120025ECAD /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C332C44FEA80025ECAD /* UIViewController+Alert.swift */; };
+		A59A2C3A2C4529130025ECAD /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C332C44FEA80025ECAD /* UIViewController+Alert.swift */; };
 		A5C1E8E12C401800009CF48B /* NSManagedObjectContext+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E02C401800009CF48B /* NSManagedObjectContext+Combine.swift */; };
 		A5C1E8EA2C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E82C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift */; };
 		A5C1E8EB2C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */; };
@@ -36,6 +54,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A532FA5B2C43DEEF001D9ECB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5537C402C3FC85400E2A7D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A532FA532C43DEEF001D9ECB;
+			remoteInfo = NTFilterControlExt;
+		};
 		A5CB71DA2C411D4200E0367E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A5537C402C3FC85400E2A7D5 /* Project object */;
@@ -52,6 +77,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				A532FA5D2C43DEEF001D9ECB /* NTFilterControlExt.appex in Embed Foundation Extensions */,
 				A5CB71DC2C411D4200E0367E /* NTFilterDataExt.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
@@ -60,6 +86,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A532FA542C43DEEF001D9ECB /* NTFilterControlExt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NTFilterControlExt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A532FA572C43DEEF001D9ECB /* FilterControlProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterControlProvider.swift; sourceTree = "<group>"; };
+		A532FA592C43DEEF001D9ECB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A532FA5A2C43DEEF001D9ECB /* NTFilterControlExt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NTFilterControlExt.entitlements; sourceTree = "<group>"; };
 		A5537C482C3FC85400E2A7D5 /* NetworkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5537C4B2C3FC85400E2A7D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5537C4D2C3FC85400E2A7D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +107,9 @@
 		A5537C8C2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+init.swift"; sourceTree = "<group>"; };
 		A5537C922C40016100E2A7D5 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
+		A59A2C292C44F9190025ECAD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A59A2C2F2C44FD690025ECAD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A59A2C332C44FEA80025ECAD /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		A5C1E8E02C401800009CF48B /* NSManagedObjectContext+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Combine.swift"; sourceTree = "<group>"; };
 		A5C1E8E82C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryInfoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryInfoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -88,6 +121,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A532FA512C43DEEF001D9ECB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A532FA552C43DEEF001D9ECB /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A5537C452C3FC85400E2A7D5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -106,11 +147,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A532FA562C43DEEF001D9ECB /* NTFilterControlExt */ = {
+			isa = PBXGroup;
+			children = (
+				A532FA572C43DEEF001D9ECB /* FilterControlProvider.swift */,
+				A532FA592C43DEEF001D9ECB /* Info.plist */,
+				A532FA5A2C43DEEF001D9ECB /* NTFilterControlExt.entitlements */,
+			);
+			path = NTFilterControlExt;
+			sourceTree = "<group>";
+		};
 		A5537C3F2C3FC85400E2A7D5 = {
 			isa = PBXGroup;
 			children = (
 				A5537C4A2C3FC85400E2A7D5 /* NetworkTracker */,
 				A5CB71D52C411D4200E0367E /* NTFilterDataExt */,
+				A532FA562C43DEEF001D9ECB /* NTFilterControlExt */,
 				A5537C682C3FC92000E2A7D5 /* Frameworks */,
 				A5537C492C3FC85400E2A7D5 /* Products */,
 			);
@@ -121,6 +173,7 @@
 			children = (
 				A5537C482C3FC85400E2A7D5 /* NetworkTracker.app */,
 				A5CB71D32C411D4200E0367E /* NTFilterDataExt.appex */,
+				A532FA542C43DEEF001D9ECB /* NTFilterControlExt.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -196,9 +249,8 @@
 		A5537C7C2C3FCAB200E2A7D5 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				A5537C772C3FC9D400E2A7D5 /* Model */,
-				A5537C792C3FC9E400E2A7D5 /* ViewModel */,
-				A5537C782C3FC9DE00E2A7D5 /* View */,
+				A59A2C2D2C44FD3A0025ECAD /* Main */,
+				A59A2C2E2C44FD480025ECAD /* Settings */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -207,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				A5537C832C3FF6DC00E2A7D5 /* Extension */,
+				A59A2C292C44F9190025ECAD /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -217,6 +270,7 @@
 				A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */,
 				A5537C922C40016100E2A7D5 /* UIView+Shadow.swift */,
 				A5C1E8E02C401800009CF48B /* NSManagedObjectContext+Combine.swift */,
+				A59A2C332C44FEA80025ECAD /* UIViewController+Alert.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -236,6 +290,24 @@
 				A5537C8C2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		A59A2C2D2C44FD3A0025ECAD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A5537C772C3FC9D400E2A7D5 /* Model */,
+				A5537C792C3FC9E400E2A7D5 /* ViewModel */,
+				A5537C782C3FC9DE00E2A7D5 /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		A59A2C2E2C44FD480025ECAD /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A59A2C2F2C44FD690025ECAD /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		A5C1E8E22C40182D009CF48B /* Services */ = {
@@ -276,6 +348,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A532FA532C43DEEF001D9ECB /* NTFilterControlExt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A532FA5E2C43DEEF001D9ECB /* Build configuration list for PBXNativeTarget "NTFilterControlExt" */;
+			buildPhases = (
+				A532FA502C43DEEF001D9ECB /* Sources */,
+				A532FA512C43DEEF001D9ECB /* Frameworks */,
+				A532FA522C43DEEF001D9ECB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NTFilterControlExt;
+			productName = NTFilterControlExt;
+			productReference = A532FA542C43DEEF001D9ECB /* NTFilterControlExt.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		A5537C472C3FC85400E2A7D5 /* NetworkTracker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A5537C5F2C3FC85600E2A7D5 /* Build configuration list for PBXNativeTarget "NetworkTracker" */;
@@ -289,6 +378,7 @@
 			);
 			dependencies = (
 				A5CB71DB2C411D4200E0367E /* PBXTargetDependency */,
+				A532FA5C2C43DEEF001D9ECB /* PBXTargetDependency */,
 			);
 			name = NetworkTracker;
 			productName = NetworkTracker;
@@ -322,6 +412,9 @@
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					A532FA532C43DEEF001D9ECB = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					A5537C472C3FC85400E2A7D5 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -345,11 +438,19 @@
 			targets = (
 				A5537C472C3FC85400E2A7D5 /* NetworkTracker */,
 				A5CB71D22C411D4200E0367E /* NTFilterDataExt */,
+				A532FA532C43DEEF001D9ECB /* NTFilterControlExt */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A532FA522C43DEEF001D9ECB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A5537C462C3FC85400E2A7D5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -369,11 +470,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A532FA502C43DEEF001D9ECB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A59A2C3A2C4529130025ECAD /* UIViewController+Alert.swift in Sources */,
+				A532FA622C43DFC4001D9ECB /* NetworkTracker.xcdatamodeld in Sources */,
+				A532FA632C43DFCA001D9ECB /* QueryInfoEntity+CoreDataClass.swift in Sources */,
+				A59A2C382C4529080025ECAD /* UILabel+init.swift in Sources */,
+				A59A2C362C4528E60025ECAD /* SettingsViewController.swift in Sources */,
+				A532FA612C43DFBF001D9ECB /* CoreDataManager.swift in Sources */,
+				A532FA642C43DFCC001D9ECB /* QueryInfoEntity+CoreDataProperties.swift in Sources */,
+				A532FA582C43DEEF001D9ECB /* FilterControlProvider.swift in Sources */,
+				A59A2C2C2C44F9190025ECAD /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A5537C442C3FC85400E2A7D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A5537C812C3FF51700E2A7D5 /* QueryInfoModel.swift in Sources */,
+				A59A2C2A2C44F9190025ECAD /* Constants.swift in Sources */,
 				A5537C7F2C3FF31500E2A7D5 /* MainViewModel.swift in Sources */,
 				A5C1E8EA2C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift in Sources */,
 				A5C1E8EB2C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift in Sources */,
@@ -388,7 +506,9 @@
 				A5537C882C3FFDF100E2A7D5 /* EmptyView.swift in Sources */,
 				A5537C8F2C40010800E2A7D5 /* UILabel+init.swift in Sources */,
 				A5D7900E2C41A6A600AFCA2E /* FilterDataProvider.swift in Sources */,
+				A59A2C342C44FEA80025ECAD /* UIViewController+Alert.swift in Sources */,
 				A5537C4E2C3FC85400E2A7D5 /* SceneDelegate.swift in Sources */,
+				A59A2C302C44FD690025ECAD /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,14 +520,23 @@
 				A5CB71E22C411D6100E0367E /* QueryInfoEntity+CoreDataClass.swift in Sources */,
 				A5CB71D72C411D4200E0367E /* FilterDataProvider.swift in Sources */,
 				A5CB71E32C411D6300E0367E /* QueryInfoEntity+CoreDataProperties.swift in Sources */,
+				A59A2C372C4529070025ECAD /* UILabel+init.swift in Sources */,
+				A59A2C392C4529120025ECAD /* UIViewController+Alert.swift in Sources */,
+				A59A2C2B2C44F9190025ECAD /* Constants.swift in Sources */,
 				A5D790122C42833700AFCA2E /* CoreDataManager.swift in Sources */,
 				A5CB71E02C411D5200E0367E /* NetworkTracker.xcdatamodeld in Sources */,
+				A59A2C352C4528E60025ECAD /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A532FA5C2C43DEEF001D9ECB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A532FA532C43DEEF001D9ECB /* NTFilterControlExt */;
+			targetProxy = A532FA5B2C43DEEF001D9ECB /* PBXContainerItemProxy */;
+		};
 		A5CB71DB2C411D4200E0367E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A5CB71D22C411D4200E0367E /* NTFilterDataExt */;
@@ -427,6 +556,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A532FA5F2C43DEEF001D9ECB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NTFilterControlExt/NTFilterControlExt.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H32J47ML7Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NTFilterControlExt/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NTFilterControlExt;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pysarenkodev.NetworkTracker.NTFilterControlExt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A532FA602C43DEEF001D9ECB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NTFilterControlExt/NTFilterControlExt.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H32J47ML7Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NTFilterControlExt/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NTFilterControlExt;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pysarenkodev.NetworkTracker.NTFilterControlExt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		A5537C5D2C3FC85600E2A7D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -663,6 +846,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A532FA5E2C43DEEF001D9ECB /* Build configuration list for PBXNativeTarget "NTFilterControlExt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A532FA5F2C43DEEF001D9ECB /* Debug */,
+				A532FA602C43DEEF001D9ECB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A5537C432C3FC85400E2A7D5 /* Build configuration list for PBXProject "NetworkTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

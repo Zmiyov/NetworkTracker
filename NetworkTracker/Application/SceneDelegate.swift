@@ -13,7 +13,16 @@ import AdSupport
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var attStatus: ATTrackingManager.AuthorizationStatus? {
+        didSet {
+            guard oldValue != attStatus else { return }
+            if attStatus == .authorized {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                    self.configureFilter()
+                }
+            }
+        }
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -59,12 +68,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func makeATT() {
         
         ATTrackingManager.requestTrackingAuthorization { status in
+            self.attStatus = status
+            
             switch status {
             case .authorized:
                 print("Authorized")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.configureFilter()
-                }
             case .denied:
                 print("Denied")
             case .notDetermined:

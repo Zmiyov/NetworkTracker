@@ -60,7 +60,13 @@ final class MainViewController: UIViewController {
         configureCollectionView()
         bindViewModel()
         createDataSource()
-        mainScreenViewModel.fetchItemsFromCoreData()
+        loadItems()
+       
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.loadItems), name: Constants.ObservableNotification.appBecameActive.name, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Constants.ObservableNotification.appBecameActive.name, object: nil)
     }
 
     private func configureView() {
@@ -95,6 +101,20 @@ final class MainViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 
+    @objc 
+    private func loadItems() {
+        do {
+            try mainScreenViewModel.getAllItems()
+        } catch {
+            showWarning(title: "Error", body: "Fetching error")
+        }
+    }
+    
+    @objc
+    func openSettings() {
+        let settingsViewController = SettingsViewController()
+        present(settingsViewController, animated: true)
+    }
 }
 
 //MARK: - Mock
@@ -102,7 +122,11 @@ final class MainViewController: UIViewController {
 extension MainViewController {
     @objc
     func addMockCareDataModels() {
-        CoreDataManager.shared.addRequest(requestText: "requestText", requestDate: Date(), websiteLink: "url")
+        do {
+            try CoreDataManager.shared.addRequest(requestText: "requestText", requestDate: Date(), websiteLink: "url")
+        } catch {
+            print("Error creating mock data")
+        }
     }
 }
 
@@ -137,8 +161,13 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - MyCollectionViewCellDelegate
 
 extension MainViewController: MyCollectionViewCellDelegate {
-    func didTapButton(in cell: InfoCollectionViewCell, id: UUID) {
-        mainScreenViewModel.deleteItem(with: id)
+    func didTapButton(in cell: InfoCollectionViewCell, id: String) {
+        do {
+           try mainScreenViewModel.deleteItem(with: id)
+        } catch {
+            showWarning(title: "Error", body: "Deleting error")
+        }
+       
     }
 }
 

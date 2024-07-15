@@ -6,7 +6,6 @@
 //
 
 import NetworkExtension
-//import CoreData
 import OSLog
 
 class FilterDataProvider: NEFilterDataProvider {
@@ -30,22 +29,6 @@ class FilterDataProvider: NEFilterDataProvider {
     }
     
     override func handleNewFlow(_ flow: NEFilterFlow) -> NEFilterNewFlowVerdict {
-        if let url = flow.url, url.absoluteString.contains("google.com") {
-            // Save the request details to Core Data
-            os_log("Handling new flow", log: log)
-            saveRequestToDatabase(request: url)
-            return .allow()
-        } else {
-            os_log("No URL found in flow.", log: log)
-            return .allow()
-        }
+        return .allow()
     }
-    
-    private func saveRequestToDatabase(request: URL) {
-        let query = request.query ?? "No query"
-        let link = request.absoluteString
-        CoreDataManager.shared.addRequest(requestText: query, requestDate: Date(), websiteLink: link)
-        os_log("Saved request to database", log: log)
-    }
-
 }

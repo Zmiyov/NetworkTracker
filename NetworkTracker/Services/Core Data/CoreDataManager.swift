@@ -6,75 +6,151 @@
 //
 
 import CoreData
+import Combine
 
 class CoreDataManager {
+
+    private var cancellables: Set<AnyCancellable> = []
     
     static let shared = CoreDataManager()
-
-    private init() {}
-
-    lazy var persistentContainer: NSPersistentContainer = {
+    
+    private init() {
+        observeChanges()
+    }
+    
+    let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "NetworkTracker")
-
-        guard let appGroupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.pysarenkodev.NetworkTracker") else {
-            fatalError("Unable to find app group container")
+        
+        guard let appGroupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Constants.appGroupIdentifier) else {
+            fatalError("Unable to find container URL for app group identifier")
         }
-
-        let storeURL = appGroupURL.appendingPathComponent("NetworkTracker.sqlite")
-        let description = NSPersistentStoreDescription(url: storeURL)
         
-        // Set migration options but avoid read-only option
-        description.shouldInferMappingModelAutomatically = true
-        description.shouldMigrateStoreAutomatically = true
+        let storeURL = appGroupURL.appendingPathComponent("qdata").appendingPathComponent("db.sqlite")
+        let storeDescription = NSPersistentStoreDescription(url: storeURL)
         
-        container.persistentStoreDescriptions = [description]
-
-        container.loadPersistentStores { (storeDescription, error) in
+        storeDescription.shouldMigrateStoreAutomatically = true
+        storeDescription.shouldInferMappingModelAutomatically = true
+        
+        container.persistentStoreDescriptions = [storeDescription]
+        
+        container.loadPersistentStores { storeDescription, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         }
+        
         return container
     }()
-
-    var context: NSManagedObjectContext {
+    
+    var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
+    
+//    var managedObjectContext: NSManagedObjectContext {
+//        return persistentContainer.newBackgroundContext()
+//    }
+    
+    var managedObjectContext: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+    
+    enum Errors:Error {
+        case createDatabase
+        case missingObjectField
+        case noSuchRule
+        case ruleAlreadyExists
+    }
+    
+    private func observeChanges() {
+        
+        NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave, object: managedObjectContext)
+            .sink {  _ in
+                NotificationCenter.default.post(name: Constants.ObservableNotification.appBecameActive.name, object: nil)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func fetchAll() throws -> [QueryInfoEntity] {
+        var requests: [QueryInfoEntity] = []
+        let request: NSFetchRequest<QueryInfoEntity> = QueryInfoEntity.fetchRequest()
 
-    func saveContext() {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
+        try performAndWait {
+            requests = try self.managedObjectContext.fetch(request)
+        }
+        
+        return requests
+    }
+
+    func addRequest(requestText: String, requestDate: Date, websiteLink: String) throws {
+        let context = self.managedObjectContext
+        try performAndWait {
+            let query = QueryInfoEntity(requestText: requestText, requestDate: requestDate, websiteLink: websiteLink, helper: context)
+            print(query)
+        }
+        try saveContext(context: context)
+    }
+    
+    func delete(request: QueryInfoEntity) throws  {
+        let context = self.managedObjectContext
+        try performAndWait {
+            context.delete(request)
+        }
+        try saveContext(context: context)
+    }
+    
+    func fetchItem(withID id: String) throws -> QueryInfoEntity? {
+        let allItems = try fetchAll()
+        let filteredItem = allItems.filter { $0.id == id }.first
+        return filteredItem
+    }
+    
+    //MARK: Internals
+    private func performAndWait(fn:@escaping (() throws -> Void)) throws {
+        
+        var caughtError:Error?
+        self.managedObjectContext.performAndWait {
             do {
-                try context.save()
+                try fn()
             } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                caughtError = error
             }
         }
+        
+        if let error = caughtError {
+            throw error
+        }
     }
-
-    func addRequest(requestText: String, requestDate: Date, websiteLink: String) {
-        let trackedRequest = QueryInfoEntity(context: context)
-        trackedRequest.id = UUID()
-        trackedRequest.text = requestText
-        trackedRequest.date = requestDate
-        trackedRequest.link = websiteLink
-        saveContext()
+    
+    //MARK: - Core Data Saving/Roll back support
+    func saveContext(context: NSManagedObjectContext) throws {
+        var caughtError:Error?
+        context.performAndWait {
+            if context.hasChanges {
+                do {
+                    try context.save()
+                } catch {
+                    caughtError = error
+                }
+            }
+        }
+        
+        if let error = caughtError {
+            throw error
+        }
     }
+}
 
-//    func fetchRequests() -> [QueryInfoEntity] {
-//        let fetchRequest: NSFetchRequest<QueryInfoEntity> = QueryInfoEntity.fetchRequest()
-//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "requestDate", ascending: false)]
-//        do {
-//            return try context.fetch(fetchRequest)
-//        } catch {
-//            print("Failed to fetch requests: \(error)")
-//            return []
-//        }
-//    }
-
-    func deleteRequest(_ request: QueryInfoEntity) {
-        context.delete(request)
-        saveContext()
+extension QueryInfoEntity {
+    convenience init(requestText: String, requestDate: Date, websiteLink: String, helper context:NSManagedObjectContext) {
+        self.init(helper: context)
+        
+        self.id = UUID().uuidString
+        self.text = requestText
+        self.date = requestDate
+        self.link = websiteLink
+    }
+    
+    convenience init(helper context: NSManagedObjectContext) {
+        self.init(entity: NSEntityDescription.entity(forEntityName: "QueryInfoEntity", in: context)!, insertInto: context)
     }
 }

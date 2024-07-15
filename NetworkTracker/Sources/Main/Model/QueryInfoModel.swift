@@ -8,7 +8,7 @@
 import Foundation
 
 struct QueryInfoModel: Hashable {
-    let id: UUID
+    let id: String
     let text: String
     let date: String
     let url: String?

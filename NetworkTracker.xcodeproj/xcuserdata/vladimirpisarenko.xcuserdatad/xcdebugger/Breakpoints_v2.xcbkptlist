@@ -36,5 +36,67 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ACD8A3EF-DEC0-41F9-9FE8-6CED68E1419C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NTFilterControlExt/FilterControlProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "handleNewFlow(_:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "ACD8A3EF-DEC0-41F9-9FE8-6CED68E1419C - 4a357e6342000c15"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NTFilterControlExt.FilterControlProvider.handleNewFlow(_: __C.NEFilterFlow, completionHandler: (__C.NEFilterControlVerdict) -&gt; ()) -&gt; ()"
+                  moduleName = "NTFilterControlExt"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vladimirpisarenko/Desktop/Swift%20Projects/Test/NetworkTracker/NTFilterControlExt/FilterControlProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32">
+               </Location>
+               <Location
+                  uuid = "ACD8A3EF-DEC0-41F9-9FE8-6CED68E1419C - 4a357e6342000c15"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NTFilterControlExt.FilterControlProvider.handleNewFlow(_: __C.NEFilterFlow, completionHandler: (__C.NEFilterControlVerdict) -&gt; ()) -&gt; ()"
+                  moduleName = "NTFilterControlExt"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vladimirpisarenko/Desktop/Swift%20Projects/Test/NetworkTracker/NTFilterControlExt/FilterControlProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B4132C17-2D14-4931-8170-7E5C326DBA01"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NetworkTracker/Services/Core Data/CoreDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "performAndWait(fn:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
