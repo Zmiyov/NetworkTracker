@@ -48,7 +48,6 @@
 		A5CB71E02C411D5200E0367E /* NetworkTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5537C542C3FC85400E2A7D5 /* NetworkTracker.xcdatamodeld */; };
 		A5CB71E22C411D6100E0367E /* QueryInfoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E82C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift */; };
 		A5CB71E32C411D6300E0367E /* QueryInfoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */; };
-		A5D7900E2C41A6A600AFCA2E /* FilterDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB71D62C411D4200E0367E /* FilterDataProvider.swift */; };
 		A5D790112C42833700AFCA2E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D790102C42833700AFCA2E /* CoreDataManager.swift */; };
 		A5D790122C42833700AFCA2E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D790102C42833700AFCA2E /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
@@ -505,7 +504,6 @@
 				A5537C8D2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift in Sources */,
 				A5537C882C3FFDF100E2A7D5 /* EmptyView.swift in Sources */,
 				A5537C8F2C40010800E2A7D5 /* UILabel+init.swift in Sources */,
-				A5D7900E2C41A6A600AFCA2E /* FilterDataProvider.swift in Sources */,
 				A59A2C342C44FEA80025ECAD /* UIViewController+Alert.swift in Sources */,
 				A5537C4E2C3FC85400E2A7D5 /* SceneDelegate.swift in Sources */,
 				A59A2C302C44FD690025ECAD /* SettingsViewController.swift in Sources */,
@@ -741,10 +739,11 @@
 				DEVELOPMENT_TEAM = H32J47ML7Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NetworkTracker/Resources/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "We need to track your activity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -771,10 +770,11 @@
 				DEVELOPMENT_TEAM = H32J47ML7Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NetworkTracker/Resources/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "We need to track your activity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

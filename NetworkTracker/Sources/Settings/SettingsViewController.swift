@@ -9,7 +9,7 @@ import UIKit
 import NetworkExtension
 
 
-class SettingsViewController: UIViewController {
+final class SettingsViewController: UIViewController {
     
     private let textLabel = UILabel(font: UIFont.systemFont(ofSize: 17, weight: .bold))
     
@@ -35,7 +35,6 @@ class SettingsViewController: UIViewController {
                 self.showWarning(title: "Error loading preferences", body: "\(loadError)")
                 return
             }
-            
             self.enabledTrackingSwitch.isOn = NEFilterManager.shared().isEnabled
         }
     }
@@ -50,11 +49,11 @@ class SettingsViewController: UIViewController {
     }
     
     @objc
-    func enableToggled() {
+    private func enableToggled() {
         enabledTrackingSwitch.isOn ? enable() : disable()
     }
     
-    func enable() {
+    private func enable() {
         if NEFilterManager.shared().providerConfiguration == nil {
             let newConfiguration = NEFilterProviderConfiguration()
             newConfiguration.username = "NetworkTracker"
@@ -72,18 +71,16 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    func disable() {
+    private func disable() {
         NEFilterManager.shared().isEnabled = false
         NEFilterManager.shared().saveToPreferences { error in
             if let err = error {
                 self.showWarning(title: "Error Disabling Filter", body: "\(err)")
             }
         }
-
     }
 
     private func setupConstraints() {
-        
         view.addSubview(textLabel)
         NSLayoutConstraint.activate([
             textLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),

@@ -15,7 +15,7 @@ final class InfoCollectionViewCell: UICollectionViewCell {
     
     private let textLabel = UILabel(font: UIFont.systemFont(ofSize: 17, weight: .bold))
     private let dateLabel = UILabel(font: UIFont.systemFont(ofSize: 15, weight: .semibold))
-    private let linkLabel = UILabel(font: UIFont.systemFont(ofSize: 13, weight: .regular), alighment: .right)
+    private let linkLabel = UILabel(font: UIFont.systemFont(ofSize: 13, weight: .regular))
     
     private let deleteButton: UIButton = {
         var button = UIButton()
@@ -103,22 +103,21 @@ final class InfoCollectionViewCell: UICollectionViewCell {
             deleteButton.widthAnchor.constraint(equalToConstant: 24),
             deleteButton.heightAnchor.constraint(equalToConstant: 24)
         ])
-
+        
         containerView.addSubview(dateLabel)
         NSLayoutConstraint.activate([
             dateLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -15),
-            dateLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15)
+            dateLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
+            dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15)
         ])
-
+        
         containerView.addSubview(linkLabel)
         NSLayoutConstraint.activate([
-            linkLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -15),
-            linkLabel.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: 15),
-            linkLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
-            linkLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.25)
+            linkLabel.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 15),
+            linkLabel.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -15),
+            linkLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
+            linkLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15)
         ])
-        
-        
     }
 }
 

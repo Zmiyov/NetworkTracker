@@ -40,9 +40,7 @@ final class MainViewController: UIViewController {
     }
     
     private var cancellables: Set<AnyCancellable> = []
-    
-    var providerManager: NEAppProxyProviderManager!
-    
+        
     init(mainScreenViewModel: MainScreenViewModelProtocol) {
         self.mainScreenViewModel = mainScreenViewModel
         super.init(nibName: nil, bundle: nil)
@@ -52,7 +50,7 @@ final class MainViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -61,20 +59,20 @@ final class MainViewController: UIViewController {
         bindViewModel()
         createDataSource()
         loadItems()
-       
+        
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.loadItems), name: Constants.ObservableNotification.appBecameActive.name, object: nil)
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: Constants.ObservableNotification.appBecameActive.name, object: nil)
     }
-
+    
     private func configureView() {
         title = "Queries"
         view.backgroundColor = .tertiarySystemBackground
         
         let barButtonImage = UIImage(systemName: "menubar.arrow.down.rectangle")?.withTintColor(.black).withRenderingMode(.alwaysOriginal)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: barButtonImage, style: .plain, target: self, action: #selector(addMockCareDataModels))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: barButtonImage, style: .plain, target: self, action: #selector(openSettings))
     }
     
     private func configureCollectionView() {
@@ -94,14 +92,7 @@ final class MainViewController: UIViewController {
             .store(in: &cancellables)
     }
     
-    private func updateCollectionView(with items: [QueryInfoModel]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, QueryInfoModel>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(items)
-        dataSource.apply(snapshot, animatingDifferences: true)
-    }
-
-    @objc 
+    @objc
     private func loadItems() {
         do {
             try mainScreenViewModel.getAllItems()
@@ -111,22 +102,9 @@ final class MainViewController: UIViewController {
     }
     
     @objc
-    func openSettings() {
+    private func openSettings() {
         let settingsViewController = SettingsViewController()
         present(settingsViewController, animated: true)
-    }
-}
-
-//MARK: - Mock
-
-extension MainViewController {
-    @objc
-    func addMockCareDataModels() {
-        do {
-            try CoreDataManager.shared.addRequest(requestText: "requestText", requestDate: Date(), websiteLink: "url")
-        } catch {
-            print("Error creating mock data")
-        }
     }
 }
 
@@ -134,7 +112,7 @@ extension MainViewController {
 
 extension MainViewController {
     
-    func createDataSource() {
+    private func createDataSource() {
         dataSource = EmptyableDiffableDataSource<Section, QueryInfoModel>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, infoModel) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainScreenCellIdentifiers.queriesInfoListCell.rawValue, for: indexPath) as? InfoCollectionViewCell
             cell?.configure(with: infoModel)
@@ -143,8 +121,15 @@ extension MainViewController {
         }, emptyStateView: EmptyView())
     }
     
-    func updateDataSource() {
+    private func updateDataSource() {
         dataSource.apply(filteredItemsSnapshot)
+    }
+    
+    private func updateCollectionView(with items: [QueryInfoModel]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, QueryInfoModel>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(items)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
 
@@ -163,18 +148,17 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 extension MainViewController: MyCollectionViewCellDelegate {
     func didTapButton(in cell: InfoCollectionViewCell, id: String) {
         do {
-           try mainScreenViewModel.deleteItem(with: id)
+            try mainScreenViewModel.deleteItem(with: id)
         } catch {
             showWarning(title: "Error", body: "Deleting error")
         }
-       
+        
     }
 }
 
 // MARK: - Set Constraints
 
 extension MainViewController {
-
     private func setConstraints() {
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([

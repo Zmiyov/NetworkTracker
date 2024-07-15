@@ -29,13 +29,16 @@ class FilterControlProvider: NEFilterControlProvider {
     }
     
     override func handleNewFlow(_ flow: NEFilterFlow, completionHandler: @escaping (NEFilterControlVerdict) -> Void) {
-        if let url = flow.url, url.absoluteString.contains("google.com") {
+        if let url = flow.url,
+            url.absoluteString.contains("google.com") 
+        {
             // Save the request details to Core Data
             os_log("FilterControlProvider Handling new flow", log: log)
             
             do {
+                os_log("FilterControlProvider save.", log: log)
                 try saveRequestToDatabase(request: url)
-                completionHandler(.allow(withUpdateRules: false))
+                completionHandler(.allow(withUpdateRules: true))
             } catch {
                 os_log("FilterControlProvider save request error.", log: log)
                 completionHandler(.allow(withUpdateRules: false))
