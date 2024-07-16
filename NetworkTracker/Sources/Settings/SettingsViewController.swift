@@ -18,6 +18,16 @@ final class SettingsViewController: UIViewController {
         toogle.translatesAutoresizingMaskIntoConstraints = false
         return toogle
     }()
+    
+    private let stack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.distribution = .fillEqually
+        stack.spacing = 10
+        stack.alignment = .center
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,22 +45,29 @@ final class SettingsViewController: UIViewController {
                 self.showWarning(title: "Error loading preferences", body: "\(loadError)")
                 return
             }
-            self.enabledTrackingSwitch.isOn = NEFilterManager.shared().isEnabled
+            self.handleFilterState()
         }
     }
     
     private func setupView() {
+        title = "Settings"
         view.backgroundColor = .white
-        textLabel.text = "Filter state"
+        handleFilterState()
     }
     
     private func setupSwitch() {
         enabledTrackingSwitch.addTarget(self, action: #selector(enableToggled), for: .valueChanged)
     }
     
+    private func handleFilterState() {
+        self.enabledTrackingSwitch.isOn = NEFilterManager.shared().isEnabled
+        self.textLabel.text = self.enabledTrackingSwitch.isOn ? "Filter state: ON" : "Filter state: Off"
+    }
+    
     @objc
     private func enableToggled() {
         enabledTrackingSwitch.isOn ? enable() : disable()
+        handleFilterState()
     }
     
     private func enable() {
@@ -81,18 +98,16 @@ final class SettingsViewController: UIViewController {
     }
 
     private func setupConstraints() {
-        view.addSubview(textLabel)
+        
+        view.addSubview(stack)
         NSLayoutConstraint.activate([
-            textLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15)
+            stack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
         ])
         
-        view.addSubview(enabledTrackingSwitch)
-        NSLayoutConstraint.activate([
-            enabledTrackingSwitch.topAnchor.constraint(equalTo: view.topAnchor, constant: 15),
-            enabledTrackingSwitch.leadingAnchor.constraint(equalTo: textLabel.trailingAnchor, constant: 15),
-            enabledTrackingSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            enabledTrackingSwitch.widthAnchor.constraint(equalToConstant: 50)
-        ])
+        stack.addArrangedSubview(textLabel)
+        stack.addArrangedSubview(enabledTrackingSwitch)
     }
 }

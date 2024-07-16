@@ -63,6 +63,19 @@ final class MainViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.loadItems), name: Constants.ObservableNotification.appBecameActive.name, object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NEFilterManager.shared().loadFromPreferences { [weak self] error in
+            guard let self else { return }
+            if let loadError = error {
+                showWarning(title: "Error loading preferences", body: "\(loadError)")
+                return
+            }
+            checkIfServiceActive()
+        }
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self, name: Constants.ObservableNotification.appBecameActive.name, object: nil)
     }
@@ -71,8 +84,9 @@ final class MainViewController: UIViewController {
         title = "Queries"
         view.backgroundColor = .tertiarySystemBackground
         
-        let barButtonImage = UIImage(systemName: "menubar.arrow.down.rectangle")?.withTintColor(.black).withRenderingMode(.alwaysOriginal)
+        let barButtonImage = UIImage(systemName: "gearshape")?.withTintColor(.black).withRenderingMode(.alwaysOriginal)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: barButtonImage, style: .plain, target: self, action: #selector(openSettings))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Clear list", image: nil, target: self, action: #selector(clearList))
     }
     
     private func configureCollectionView() {
@@ -104,7 +118,30 @@ final class MainViewController: UIViewController {
     @objc
     private func openSettings() {
         let settingsViewController = SettingsViewController()
-        present(settingsViewController, animated: true)
+        let navigationController = UINavigationController(rootViewController: settingsViewController)
+        present(navigationController, animated: true)
+    }
+    
+    @objc
+    private func clearList() {
+        showAlertWithAction(title: "Delete All", body: "Do you want to delete all items?", actionButtonTitle: "Delete All", actionBlock:  { [weak self] in
+            guard let self else { return }
+            do {
+                try mainScreenViewModel.deleteAllItems()
+            } catch {
+                showWarning(title: "Error", body: "Deleting error")
+            }
+        })
+  
+    }
+    
+    private func checkIfServiceActive() {
+        if  NEFilterManager.shared().isEnabled == false {
+            showAlertWithAction(title: "Filter is disabled", body: "Change state in the settings", actionButtonTitle: "Settings", actionBlock:  { [weak self] in
+                guard let self else { return }
+                self.openSettings()
+            })
+        }
     }
 }
 
@@ -146,13 +183,15 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - MyCollectionViewCellDelegate
 
 extension MainViewController: MyCollectionViewCellDelegate {
-    func didTapButton(in cell: InfoCollectionViewCell, id: String) {
-        do {
-            try mainScreenViewModel.deleteItem(with: id)
-        } catch {
-            showWarning(title: "Error", body: "Deleting error")
-        }
-        
+    func didTapDeleteButton(in cell: InfoCollectionViewCell, id: String) {
+        showAlertWithAction(title: "Delete", body: "Do you want to delete the item?", actionButtonTitle: "Delete", actionBlock:  { [weak self] in
+            guard let self else { return }
+            do {
+                try mainScreenViewModel.deleteItem(with: id)
+            } catch {
+                showWarning(title: "Error", body: "Deleting error")
+            }
+        })
     }
 }
 

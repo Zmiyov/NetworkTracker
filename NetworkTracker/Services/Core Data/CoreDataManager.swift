@@ -98,6 +98,16 @@ class CoreDataManager {
         try saveContext(context: context)
     }
     
+    func deleteAllItems() throws {
+        let context = self.managedObjectContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "QueryInfoEntity")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        try performAndWait {
+            try context.execute(deleteRequest)
+            try context.save()
+        }
+    }
+    
     func fetchItem(withID id: String) throws -> QueryInfoEntity? {
         let allItems = try fetchAll()
         let filteredItem = allItems.filter { $0.id == id }.first
@@ -135,6 +145,7 @@ class CoreDataManager {
         }
         
         if let error = caughtError {
+            print(error)
             throw error
         }
     }

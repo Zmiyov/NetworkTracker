@@ -8,14 +8,14 @@
 import UIKit
 
 protocol MyCollectionViewCellDelegate: AnyObject {
-    func didTapButton(in cell: InfoCollectionViewCell, id: String)
+    func didTapDeleteButton(in cell: InfoCollectionViewCell, id: String)
 }
 
 final class InfoCollectionViewCell: UICollectionViewCell {
     
-    private let textLabel = UILabel(font: UIFont.systemFont(ofSize: 17, weight: .bold))
+    private let linkLabel = UILabel(font: UIFont.systemFont(ofSize: 17, weight: .bold))
+    private let textLabel = UILabel(font: UIFont.systemFont(ofSize: 13, weight: .regular))
     private let dateLabel = UILabel(font: UIFont.systemFont(ofSize: 15, weight: .semibold))
-    private let linkLabel = UILabel(font: UIFont.systemFont(ofSize: 13, weight: .regular))
     
     private let deleteButton: UIButton = {
         var button = UIButton()
@@ -74,7 +74,7 @@ final class InfoCollectionViewCell: UICollectionViewCell {
     private func setupButton() {
         let deleteAction = UIAction { [weak self] action in
             guard let self, let infoModelID else { return }
-            delegate?.didTapButton(in: self, id: infoModelID)
+            delegate?.didTapDeleteButton(in: self, id: infoModelID)
         }
         
         deleteButton.addAction(deleteAction, for: .touchUpInside)
@@ -89,11 +89,11 @@ final class InfoCollectionViewCell: UICollectionViewCell {
             containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
         ])
 
-        containerView.addSubview(textLabel)
+        containerView.addSubview(linkLabel)
         NSLayoutConstraint.activate([
-            textLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 15),
-            textLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
-            textLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15)
+            linkLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 15),
+            linkLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
+            linkLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15)
         ])
         
         containerView.addSubview(deleteButton)
@@ -111,12 +111,12 @@ final class InfoCollectionViewCell: UICollectionViewCell {
             dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15)
         ])
         
-        containerView.addSubview(linkLabel)
+        containerView.addSubview(textLabel)
         NSLayoutConstraint.activate([
-            linkLabel.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 15),
-            linkLabel.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -15),
-            linkLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
-            linkLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15)
+            textLabel.topAnchor.constraint(equalTo: linkLabel.bottomAnchor, constant: 15),
+            textLabel.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -15),
+            textLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
+            textLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15)
         ])
     }
 }

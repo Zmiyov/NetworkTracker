@@ -15,13 +15,13 @@ protocol MainScreenViewModelProtocol {
     
     func getAllItems() throws
     func deleteItem(with id: String) throws
+    func deleteAllItems() throws
 }
 
 final class MainScreenViewModel: MainScreenViewModelProtocol, ObservableObject {
 
-    let items = PassthroughSubject<[QueryInfoModel], Never>()
+    private(set) var items = PassthroughSubject<[QueryInfoModel], Never>()
     private var cancellables: Set<AnyCancellable> = []
-    
     
     init() {}
 
@@ -47,5 +47,9 @@ final class MainScreenViewModel: MainScreenViewModelProtocol, ObservableObject {
         if let item = try CoreDataManager.shared.fetchItem(withID: id) {
             try CoreDataManager.shared.delete(request: item)
         }
+    }
+    
+    func deleteAllItems() throws {
+        try CoreDataManager.shared.deleteAllItems()
     }
 }

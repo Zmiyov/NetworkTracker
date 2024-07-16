@@ -11,11 +11,6 @@ import OSLog
 class FilterDataProvider: NEFilterDataProvider {
     
     private let log = OSLog(subsystem: "com.pysarenkodev.NTFilterDataExt", category: "general")
-    
-    override init() {
-        os_log("FilterDataProvider init", log: log)
-        super.init()
-    }
 
     override func startFilter(completionHandler: @escaping (Error?) -> Void) {
         os_log("FilterDataProvider start", log: log)
@@ -27,7 +22,12 @@ class FilterDataProvider: NEFilterDataProvider {
     }
     
     override func handleNewFlow(_ flow: NEFilterFlow) -> NEFilterNewFlowVerdict {
-        return .needRules()
-//        return .allow()
+        if let url = flow.url,
+               url.absoluteString.contains("google.com")
+        {
+            return .needRules()
+        } else {
+            return .allow()
+        }
     }
 }
