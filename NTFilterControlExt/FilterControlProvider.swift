@@ -24,16 +24,24 @@ class FilterControlProvider: NEFilterControlProvider {
     
     override func handleNewFlow(_ flow: NEFilterFlow, completionHandler: @escaping (NEFilterControlVerdict) -> Void) {
         
-        if let url = flow.url {
-            // Save the request details to Core Data
-            do {
-                try saveRequestToDatabase(request: url)
-                completionHandler(.allow(withUpdateRules: true))
-            } catch {
-                completionHandler(.allow(withUpdateRules: false))
-            }
-           
-        } else {
+        guard  let app = flow.sourceAppIdentifier
+        else {
+            completionHandler(.allow(withUpdateRules: false))
+            return
+        }
+        
+        guard let host = flow.getHost(), let url = flow.url else {
+            completionHandler(.allow(withUpdateRules: false))
+            return
+        }
+        
+        /// Save the request details to Core Data and show it in notification
+        do {
+            fireNotification(app: app, hostname: host)
+            try saveRequestToDatabase(request: url)
+            completionHandler(.allow(withUpdateRules: true))
+        } catch {
+            fireErrorNotification(error: "\(error)")
             completionHandler(.allow(withUpdateRules: false))
         }
     }
@@ -42,5 +50,47 @@ class FilterControlProvider: NEFilterControlProvider {
         let query = request.absoluteString
         let link = request.host() ?? "No link"
         try CoreDataManager.shared.addRequest(requestText: query, requestDate: Date(), websiteLink: link)
+    }
+    
+    func fireNotification(app: String, hostname: String) {
+
+        UNUserNotificationCenter.current().getDeliveredNotifications { notes in
+            let content = UNMutableNotificationContent()
+            content.categoryIdentifier = Constants.notificationCategory
+            content.userInfo = ["app": app, "host": hostname]
+            content.body = app
+            content.title = hostname
+            content.threadIdentifier = app
+            
+            let id = UUID().uuidString
+            
+            let note = UNNotificationRequest(identifier: id,
+                                             content: content,
+                                             trigger: nil)
+            
+            
+            UNUserNotificationCenter.current().add(note) { (err) in
+                if err != nil {
+                    print("err: \(err!)")
+                }
+            }
+        }
+    }
+    
+    func fireErrorNotification(error: String) {
+ 
+        let content = UNMutableNotificationContent()
+        content.title = "Error Showing Request"
+        content.body = error
+    
+        let note = UNNotificationRequest(identifier: "network_tracker_error_\(Date().timeIntervalSinceNow)",
+                                         content: content,
+                                         trigger: nil)
+        
+        UNUserNotificationCenter.current().add(note) { (err) in
+            if err != nil {
+                print("err: \(err!)")
+            }
+        }
     }
 }

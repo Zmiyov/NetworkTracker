@@ -9,18 +9,23 @@
 import Foundation
 import Combine
 import CoreData
+import NetworkExtension
 
 protocol MainScreenViewModelProtocol {
     var items: PassthroughSubject<[QueryInfoModel], Never> { get }
+    var error: PassthroughSubject<(String, String), Never> { get }
     
     func getAllItems() throws
     func deleteItem(with id: String) throws
     func deleteAllItems() throws
+    func filterServiceStatus() -> Bool
+    func checkFilterService(completion: @escaping () -> Void)
 }
 
 final class MainScreenViewModel: MainScreenViewModelProtocol, ObservableObject {
 
     private(set) var items = PassthroughSubject<[QueryInfoModel], Never>()
+    private(set) var error = PassthroughSubject<(String, String), Never>()
     private var cancellables: Set<AnyCancellable> = []
     
     init() {}
@@ -51,5 +56,21 @@ final class MainScreenViewModel: MainScreenViewModelProtocol, ObservableObject {
     
     func deleteAllItems() throws {
         try CoreDataManager.shared.deleteAllItems()
+    }
+    
+    func filterServiceStatus() -> Bool {
+        return NEFilterManager.shared().isEnabled
+    }
+    
+    func checkFilterService(completion: @escaping () -> Void) {
+        NEFilterManager.shared().loadFromPreferences { [weak self] error in
+            guard let self else { return }
+            if let loadError = error {
+                self.error.send(("Error loading preferences", "\(loadError)"))
+                completion()
+                return
+            }
+            completion()
+        }
     }
 }

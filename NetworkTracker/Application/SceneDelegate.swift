@@ -29,13 +29,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidBecomeActive(_ scene: UIScene) {
         NotificationCenter.default.post(name: Constants.ObservableNotification.appBecameActive.name, object: nil)
-        makeATT()
+        requestATT()
     }
     
-    func makeATT() {
-        
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+    }
+    
+    /// Requests authorization for AppTrackingTransparency
+    func requestATT() {
         ATTrackingManager.requestTrackingAuthorization { status in
-            
             switch status {
             case .authorized:
                 print("Authorized")
@@ -45,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 print("Not Determined")
                 Task {
                     await MainActor.run {
-                        self.makeATT()
+                        self.requestATT()
                     }
                 }
             case .restricted:

@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIView {
+    /// Draw shadow for any view with constant parameters
     func drawShadow() {
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.black.cgColor

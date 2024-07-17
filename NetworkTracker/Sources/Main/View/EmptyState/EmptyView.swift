@@ -31,9 +31,9 @@ final class EmptyView: UIView {
         addSubview(imageView)
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor),
-            imageView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor)
+            imageView.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor)
         ])
     }
 }

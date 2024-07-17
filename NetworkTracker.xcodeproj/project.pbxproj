@@ -33,13 +33,14 @@
 		A59A2C2C2C44F9190025ECAD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C292C44F9190025ECAD /* Constants.swift */; };
 		A59A2C302C44FD690025ECAD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C2F2C44FD690025ECAD /* SettingsViewController.swift */; };
 		A59A2C342C44FEA80025ECAD /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C332C44FEA80025ECAD /* UIViewController+Alert.swift */; };
-		A59A2C352C4528E60025ECAD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C2F2C44FD690025ECAD /* SettingsViewController.swift */; };
-		A59A2C362C4528E60025ECAD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C2F2C44FD690025ECAD /* SettingsViewController.swift */; };
 		A59A2C372C4529070025ECAD /* UILabel+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */; };
 		A59A2C382C4529080025ECAD /* UILabel+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */; };
 		A59A2C392C4529120025ECAD /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C332C44FEA80025ECAD /* UIViewController+Alert.swift */; };
 		A59A2C3A2C4529130025ECAD /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C332C44FEA80025ECAD /* UIViewController+Alert.swift */; };
-		A5C1E8E12C401800009CF48B /* NSManagedObjectContext+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E02C401800009CF48B /* NSManagedObjectContext+Combine.swift */; };
+		A59A2C872C467ABE0025ECAD /* NEFilterFlow+GetHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C862C467ABE0025ECAD /* NEFilterFlow+GetHost.swift */; };
+		A59A2C882C467ABE0025ECAD /* NEFilterFlow+GetHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C862C467ABE0025ECAD /* NEFilterFlow+GetHost.swift */; };
+		A59A2C8A2C467C5F0025ECAD /* AppDelegate+Notifications .swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C892C467C5F0025ECAD /* AppDelegate+Notifications .swift */; };
+		A59A2C922C4689D10025ECAD /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C912C4689D10025ECAD /* SettingsViewModel.swift */; };
 		A5C1E8EA2C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E82C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift */; };
 		A5C1E8EB2C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */; };
 		A5CB71D42C411D4200E0367E /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5537C692C3FC92000E2A7D5 /* NetworkExtension.framework */; };
@@ -109,7 +110,9 @@
 		A59A2C292C44F9190025ECAD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A59A2C2F2C44FD690025ECAD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A59A2C332C44FEA80025ECAD /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
-		A5C1E8E02C401800009CF48B /* NSManagedObjectContext+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Combine.swift"; sourceTree = "<group>"; };
+		A59A2C862C467ABE0025ECAD /* NEFilterFlow+GetHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEFilterFlow+GetHost.swift"; sourceTree = "<group>"; };
+		A59A2C892C467C5F0025ECAD /* AppDelegate+Notifications .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications .swift"; sourceTree = "<group>"; };
+		A59A2C912C4689D10025ECAD /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		A5C1E8E82C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryInfoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryInfoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A5CB71D32C411D4200E0367E /* NTFilterDataExt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NTFilterDataExt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -268,8 +271,9 @@
 			children = (
 				A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */,
 				A5537C922C40016100E2A7D5 /* UIView+Shadow.swift */,
-				A5C1E8E02C401800009CF48B /* NSManagedObjectContext+Combine.swift */,
 				A59A2C332C44FEA80025ECAD /* UIViewController+Alert.swift */,
+				A59A2C862C467ABE0025ECAD /* NEFilterFlow+GetHost.swift */,
+				A59A2C892C467C5F0025ECAD /* AppDelegate+Notifications .swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -304,9 +308,26 @@
 		A59A2C2E2C44FD480025ECAD /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				A59A2C2F2C44FD690025ECAD /* SettingsViewController.swift */,
+				A59A2C902C4689BA0025ECAD /* ViewModel */,
+				A59A2C8F2C4689B00025ECAD /* View */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		A59A2C8F2C4689B00025ECAD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A59A2C2F2C44FD690025ECAD /* SettingsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A59A2C902C4689BA0025ECAD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A59A2C912C4689D10025ECAD /* SettingsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A5C1E8E22C40182D009CF48B /* Services */ = {
@@ -477,9 +498,9 @@
 				A532FA622C43DFC4001D9ECB /* NetworkTracker.xcdatamodeld in Sources */,
 				A532FA632C43DFCA001D9ECB /* QueryInfoEntity+CoreDataClass.swift in Sources */,
 				A59A2C382C4529080025ECAD /* UILabel+init.swift in Sources */,
-				A59A2C362C4528E60025ECAD /* SettingsViewController.swift in Sources */,
 				A532FA612C43DFBF001D9ECB /* CoreDataManager.swift in Sources */,
 				A532FA642C43DFCC001D9ECB /* QueryInfoEntity+CoreDataProperties.swift in Sources */,
+				A59A2C882C467ABE0025ECAD /* NEFilterFlow+GetHost.swift in Sources */,
 				A532FA582C43DEEF001D9ECB /* FilterControlProvider.swift in Sources */,
 				A59A2C2C2C44F9190025ECAD /* Constants.swift in Sources */,
 			);
@@ -489,6 +510,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A59A2C8A2C467C5F0025ECAD /* AppDelegate+Notifications .swift in Sources */,
 				A5537C812C3FF51700E2A7D5 /* QueryInfoModel.swift in Sources */,
 				A59A2C2A2C44F9190025ECAD /* Constants.swift in Sources */,
 				A5537C7F2C3FF31500E2A7D5 /* MainViewModel.swift in Sources */,
@@ -498,15 +520,16 @@
 				A5537C8A2C3FFEBA00E2A7D5 /* EmptyDataSource.swift in Sources */,
 				A5537C502C3FC85400E2A7D5 /* MainViewController.swift in Sources */,
 				A5537C932C40016100E2A7D5 /* UIView+Shadow.swift in Sources */,
-				A5C1E8E12C401800009CF48B /* NSManagedObjectContext+Combine.swift in Sources */,
 				A5537C562C3FC85400E2A7D5 /* NetworkTracker.xcdatamodeld in Sources */,
 				A5537C4C2C3FC85400E2A7D5 /* AppDelegate.swift in Sources */,
+				A59A2C872C467ABE0025ECAD /* NEFilterFlow+GetHost.swift in Sources */,
 				A5537C8D2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift in Sources */,
 				A5537C882C3FFDF100E2A7D5 /* EmptyView.swift in Sources */,
 				A5537C8F2C40010800E2A7D5 /* UILabel+init.swift in Sources */,
 				A59A2C342C44FEA80025ECAD /* UIViewController+Alert.swift in Sources */,
 				A5537C4E2C3FC85400E2A7D5 /* SceneDelegate.swift in Sources */,
 				A59A2C302C44FD690025ECAD /* SettingsViewController.swift in Sources */,
+				A59A2C922C4689D10025ECAD /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,7 +546,6 @@
 				A59A2C2B2C44F9190025ECAD /* Constants.swift in Sources */,
 				A5D790122C42833700AFCA2E /* CoreDataManager.swift in Sources */,
 				A5CB71E02C411D5200E0367E /* NetworkTracker.xcdatamodeld in Sources */,
-				A59A2C352C4528E60025ECAD /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

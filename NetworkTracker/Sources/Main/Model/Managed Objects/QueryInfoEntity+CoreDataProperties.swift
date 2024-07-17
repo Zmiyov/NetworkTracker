@@ -26,3 +26,18 @@ extension QueryInfoEntity {
 extension QueryInfoEntity : Identifiable {
 
 }
+
+extension QueryInfoEntity {
+    convenience init(requestText: String, requestDate: Date, websiteLink: String, helper context:NSManagedObjectContext) {
+        self.init(helper: context)
+        
+        self.id = UUID().uuidString
+        self.text = requestText
+        self.date = requestDate
+        self.link = websiteLink
+    }
+    
+    convenience init(helper context: NSManagedObjectContext) {
+        self.init(entity: NSEntityDescription.entity(forEntityName: "QueryInfoEntity", in: context)!, insertInto: context)
+    }
+}

@@ -42,27 +42,11 @@ class CoreDataManager {
         return container
     }()
     
-    var viewContext: NSManagedObjectContext {
-        return persistentContainer.viewContext
-    }
-    
-//    var managedObjectContext: NSManagedObjectContext {
-//        return persistentContainer.newBackgroundContext()
-//    }
-    
     var managedObjectContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     
-    enum Errors:Error {
-        case createDatabase
-        case missingObjectField
-        case noSuchRule
-        case ruleAlreadyExists
-    }
-    
     private func observeChanges() {
-        
         NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave, object: managedObjectContext)
             .sink {  _ in
                 NotificationCenter.default.post(name: Constants.ObservableNotification.appBecameActive.name, object: nil)
@@ -116,8 +100,8 @@ class CoreDataManager {
     
     //MARK: Internals
     private func performAndWait(fn:@escaping (() throws -> Void)) throws {
-        
         var caughtError:Error?
+        
         self.managedObjectContext.performAndWait {
             do {
                 try fn()
@@ -134,6 +118,7 @@ class CoreDataManager {
     //MARK: - Core Data Saving/Roll back support
     func saveContext(context: NSManagedObjectContext) throws {
         var caughtError:Error?
+        
         context.performAndWait {
             if context.hasChanges {
                 do {
@@ -148,20 +133,5 @@ class CoreDataManager {
             print(error)
             throw error
         }
-    }
-}
-
-extension QueryInfoEntity {
-    convenience init(requestText: String, requestDate: Date, websiteLink: String, helper context:NSManagedObjectContext) {
-        self.init(helper: context)
-        
-        self.id = UUID().uuidString
-        self.text = requestText
-        self.date = requestDate
-        self.link = websiteLink
-    }
-    
-    convenience init(helper context: NSManagedObjectContext) {
-        self.init(entity: NSEntityDescription.entity(forEntityName: "QueryInfoEntity", in: context)!, insertInto: context)
     }
 }

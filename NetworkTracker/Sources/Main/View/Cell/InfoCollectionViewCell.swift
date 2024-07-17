@@ -13,9 +13,16 @@ protocol MyCollectionViewCellDelegate: AnyObject {
 
 final class InfoCollectionViewCell: UICollectionViewCell {
     
-    private let linkLabel = UILabel(font: UIFont.systemFont(ofSize: 17, weight: .bold))
-    private let textLabel = UILabel(font: UIFont.systemFont(ofSize: 13, weight: .regular))
-    private let dateLabel = UILabel(font: UIFont.systemFont(ofSize: 15, weight: .semibold))
+    private enum Constants {
+        static let linkFontSize: CGFloat = 17
+        static let queryFontSize: CGFloat = 13
+        static let dateFontSize: CGFloat = 15
+        static let cellCornerRadius: CGFloat = 12
+    }
+    
+    private let linkLabel = UILabel(font: UIFont.systemFont(ofSize: Constants.linkFontSize, weight: .bold))
+    private let queryLabel = UILabel(font: UIFont.systemFont(ofSize: Constants.queryFontSize, weight: .regular))
+    private let dateLabel = UILabel(font: UIFont.systemFont(ofSize: Constants.dateFontSize, weight: .semibold))
     
     private let deleteButton: UIButton = {
         var button = UIButton()
@@ -27,7 +34,7 @@ final class InfoCollectionViewCell: UICollectionViewCell {
     private let containerView: UIView = {
         var view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 12
+        view.layer.cornerRadius = Constants.cellCornerRadius
         view.backgroundColor = .white
         return view
     }()
@@ -50,7 +57,7 @@ final class InfoCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        textLabel.text = nil
+        queryLabel.text = nil
         dateLabel.text = nil
         linkLabel.text = nil
     }
@@ -60,9 +67,9 @@ final class InfoCollectionViewCell: UICollectionViewCell {
         containerView.drawShadow()
     }
     
-    func configure(with info: QueryInfoModel) {
+    func configureCell(with info: QueryInfoModel) {
         self.infoModelID = info.id
-        self.textLabel.text = info.text
+        self.queryLabel.text = info.text
         self.dateLabel.text = info.date
         self.linkLabel.text = info.url ?? "No link data"
     }
@@ -81,43 +88,48 @@ final class InfoCollectionViewCell: UICollectionViewCell {
     }
     
     private func setConstraints() {
+        enum ConstraintConstants {
+            static let containerInset: CGFloat = 10
+            static let verticalInset: CGFloat = 15
+            static let horizontalInset: CGFloat = 15
+            static let buttonSize: CGFloat = 24
+        }
+        
         contentView.addSubview(containerView)
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
-            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: ConstraintConstants.containerInset),
+            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ConstraintConstants.containerInset),
+            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -ConstraintConstants.containerInset),
+            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -ConstraintConstants.containerInset)
         ])
 
         containerView.addSubview(linkLabel)
         NSLayoutConstraint.activate([
-            linkLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 15),
-            linkLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
-            linkLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15)
+            linkLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: ConstraintConstants.verticalInset),
+            linkLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: ConstraintConstants.horizontalInset),
+            linkLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -ConstraintConstants.horizontalInset)
         ])
         
         containerView.addSubview(deleteButton)
         NSLayoutConstraint.activate([
-            deleteButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 15),
-            deleteButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
-            deleteButton.widthAnchor.constraint(equalToConstant: 24),
-            deleteButton.heightAnchor.constraint(equalToConstant: 24)
+            deleteButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: ConstraintConstants.verticalInset),
+            deleteButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -ConstraintConstants.horizontalInset),
+            deleteButton.widthAnchor.constraint(equalToConstant: ConstraintConstants.buttonSize),
+            deleteButton.heightAnchor.constraint(equalToConstant: ConstraintConstants.buttonSize)
         ])
         
         containerView.addSubview(dateLabel)
         NSLayoutConstraint.activate([
-            dateLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -15),
-            dateLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
-            dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15)
+            dateLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: ConstraintConstants.horizontalInset),
+            dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -ConstraintConstants.horizontalInset),
+            dateLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -ConstraintConstants.verticalInset)
         ])
         
-        containerView.addSubview(textLabel)
+        containerView.addSubview(queryLabel)
         NSLayoutConstraint.activate([
-            textLabel.topAnchor.constraint(equalTo: linkLabel.bottomAnchor, constant: 15),
-            textLabel.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -15),
-            textLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
-            textLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15)
+            queryLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: ConstraintConstants.horizontalInset),
+            queryLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -ConstraintConstants.horizontalInset),
+            queryLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
         ])
     }
 }
-

@@ -8,7 +8,10 @@
 import Foundation
 
 struct Constants {
+    static let requestFilter = "google.com"
     static let appGroupIdentifier = "group.com.pysarenkodev.NetworkTracker"
+    static let notificationCategory = "network_request_category"
+    static let pushActivityKey = "push_activity_key"
     
     enum ObservableNotification {
         case appBecameActive

@@ -66,12 +66,17 @@ final class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NEFilterManager.shared().loadFromPreferences { [weak self] error in
+//        NEFilterManager.shared().loadFromPreferences { [weak self] error in
+//            guard let self else { return }
+//            if let loadError = error {
+//                showWarning(title: "Error loading preferences", body: "\(loadError)")
+//                return
+//            }
+//            checkIfServiceActive()
+//        }
+        
+        mainScreenViewModel.checkFilterService { [weak self] in
             guard let self else { return }
-            if let loadError = error {
-                showWarning(title: "Error loading preferences", body: "\(loadError)")
-                return
-            }
             checkIfServiceActive()
         }
     }
@@ -96,12 +101,20 @@ final class MainViewController: UIViewController {
     
     private func bindViewModel() {
         mainScreenViewModel.items
+            .receive(on: RunLoop.main)
             .sink { completion in
                 if case .failure(let error) = completion {
                     print(error)
                 }
             } receiveValue: { [weak self] infoModelsArray in
                 self?.updateCollectionView(with: infoModelsArray)
+            }
+            .store(in: &cancellables)
+        
+        mainScreenViewModel.error
+            .receive(on: RunLoop.main)
+            .sink { [weak self] (title, body) in
+                self?.showWarning(title: title, body: body)
             }
             .store(in: &cancellables)
     }
@@ -117,7 +130,8 @@ final class MainViewController: UIViewController {
     
     @objc
     private func openSettings() {
-        let settingsViewController = SettingsViewController()
+        let settingsViewModel = SettingsViewModel()
+        let settingsViewController = SettingsViewController(settingsViewModel: settingsViewModel)
         let navigationController = UINavigationController(rootViewController: settingsViewController)
         present(navigationController, animated: true)
     }
@@ -136,7 +150,7 @@ final class MainViewController: UIViewController {
     }
     
     private func checkIfServiceActive() {
-        if  NEFilterManager.shared().isEnabled == false {
+        if mainScreenViewModel.filterServiceStatus() == false {
             showAlertWithAction(title: "Filter is disabled", body: "Change state in the settings", actionButtonTitle: "Settings", actionBlock:  { [weak self] in
                 guard let self else { return }
                 self.openSettings()
@@ -152,7 +166,7 @@ extension MainViewController {
     private func createDataSource() {
         dataSource = EmptyableDiffableDataSource<Section, QueryInfoModel>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, infoModel) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainScreenCellIdentifiers.queriesInfoListCell.rawValue, for: indexPath) as? InfoCollectionViewCell
-            cell?.configure(with: infoModel)
+            cell?.configureCell(with: infoModel)
             cell?.delegate = self
             return cell
         }, emptyStateView: EmptyView())
@@ -176,7 +190,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.width / 3)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.width / 2.5)
     }
 }
 

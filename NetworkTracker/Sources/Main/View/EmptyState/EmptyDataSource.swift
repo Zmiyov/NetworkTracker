@@ -68,4 +68,3 @@ class EmptyableDiffableDataSource<S, T>: UICollectionViewDiffableDataSource<S, T
         }
     }
 }
-

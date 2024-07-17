@@ -22,9 +22,7 @@ class FilterDataProvider: NEFilterDataProvider {
     }
     
     override func handleNewFlow(_ flow: NEFilterFlow) -> NEFilterNewFlowVerdict {
-        if let url = flow.url,
-               url.absoluteString.contains("google.com")
-        {
+        if let url = flow.url, url.absoluteString.contains(Constants.requestFilter) {
             return .needRules()
         } else {
             return .allow()
