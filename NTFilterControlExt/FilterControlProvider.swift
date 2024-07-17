@@ -11,6 +11,7 @@ import UserNotifications
 
 class FilterControlProvider: NEFilterControlProvider {
     
+    /// Logging for track processes in console
     private let log = OSLog(subsystem: "com.pysarenkodev.NTFilterControlExt", category: "general")
 
     override func startFilter(completionHandler: @escaping (Error?) -> Void) {
@@ -49,11 +50,11 @@ class FilterControlProvider: NEFilterControlProvider {
     private func saveRequestToDatabase(request: URL) throws {
         let query = request.absoluteString
         let link = request.host() ?? "No link"
-        try CoreDataManager.shared.addRequest(requestText: query, requestDate: Date(), websiteLink: link)
+        try CoreDataManager.shared.addRequestToDatabase(requestText: query, requestDate: Date(), websiteLink: link)
     }
     
+    /// Configuring and send local notification with data about request
     func fireNotification(app: String, hostname: String) {
-
         UNUserNotificationCenter.current().getDeliveredNotifications { notes in
             let content = UNMutableNotificationContent()
             content.categoryIdentifier = Constants.notificationCategory
@@ -77,8 +78,8 @@ class FilterControlProvider: NEFilterControlProvider {
         }
     }
     
+    /// Configuring and send local notification with data about error
     func fireErrorNotification(error: String) {
- 
         let content = UNMutableNotificationContent()
         content.title = "Error Showing Request"
         content.body = error

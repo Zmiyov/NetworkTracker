@@ -11,6 +11,10 @@ import Combine
 
 final class SettingsViewController: UIViewController {
     
+    /// Constants for adjusting interface parameters
+    /// - Parameters
+    /// - fontSize: Labels font size
+    /// - verticalSpacing: space between rows
     private enum Constants {
         static let fontSize: CGFloat = 17
         static let verticalSpacing: CGFloat = 10
@@ -81,7 +85,7 @@ final class SettingsViewController: UIViewController {
         super.viewDidLoad()
         setupConstraints()
         setupView()
-        setupSwitch()
+        setupSwitches()
         bindViewModel()
     }
     
@@ -93,11 +97,12 @@ final class SettingsViewController: UIViewController {
     private func setupView() {
         title = "Settings"
         view.backgroundColor = .white
+        /// Set initial state
         handleFilterState()
         handlePushState()
     }
     
-    private func setupSwitch() {
+    private func setupSwitches() {
         enabledFilterSwitch.addTarget(self, action: #selector(enableFilterToggled), for: .valueChanged)
         enabledPushSwitch.addTarget(self, action: #selector(enablePushToggled), for: .valueChanged)
     }
@@ -113,14 +118,15 @@ final class SettingsViewController: UIViewController {
     }
     
     @objc
+    /// Enables and disables network filter
     private func enableFilterToggled() {
         enabledFilterSwitch.isOn ? settingsViewModel.enableFilter() : settingsViewModel.disableFilter()
         handleFilterState()
     }
     
     @objc
+    /// Enables and disables notifications. Opens system settings if needed.
     private func enablePushToggled() {
-        
         if enabledPushSwitch.isOn == true {
             settingsViewModel.enablePush()
         } else {
@@ -128,6 +134,7 @@ final class SettingsViewController: UIViewController {
         }
     }
     
+    /// Show an alert with an ability to open system settings
     private func openSettings() {
         showAlertWithAction(title: "Notifications are disabled", body: "Change state in the settings", actionButtonTitle: "Settings", then: { [weak self] in
             guard let self else { return }
@@ -139,6 +146,7 @@ final class SettingsViewController: UIViewController {
         })
     }
     
+    /// Binds a view model to a view using Combine
     private func bindViewModel() {
         settingsViewModel.enabledFilterSwitch
             .receive(on: RunLoop.main)
@@ -167,7 +175,7 @@ final class SettingsViewController: UIViewController {
     }
 
     private func setupConstraints() {
-        
+        /// Constants for verticalStack constraints
         enum ConstraintConstants {
             static let horizontalInsets: CGFloat = 15
             static let verticalInsets: CGFloat = 20

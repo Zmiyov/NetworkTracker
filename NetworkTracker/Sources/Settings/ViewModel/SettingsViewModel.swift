@@ -28,6 +28,7 @@ final class SettingsViewModel: SettingsViewModelProtocol, ObservableObject {
     private(set) var enabledPushSwitch = CurrentValueSubject<Bool, Never>(false)
     private(set) var error = PassthroughSubject<(String, String), Never>()
     
+    ///A method that checks states both network and notification services
     func checkServices() {
         NEFilterManager.shared().loadFromPreferences { error in
             if let loadError = error {
@@ -49,6 +50,7 @@ final class SettingsViewModel: SettingsViewModelProtocol, ObservableObject {
         }
     }
     
+    /// A method that enables network filter
     func enableFilter() {
         if NEFilterManager.shared().providerConfiguration == nil {
             let newConfiguration = NEFilterProviderConfiguration()
@@ -70,6 +72,7 @@ final class SettingsViewModel: SettingsViewModelProtocol, ObservableObject {
         }
     }
     
+    /// A method that disables network filter
     func disableFilter() {
         NEFilterManager.shared().isEnabled = false
         NEFilterManager.shared().saveToPreferences { error in
@@ -82,6 +85,7 @@ final class SettingsViewModel: SettingsViewModelProtocol, ObservableObject {
         }
     }
     
+    /// A method that enables notifications
     func enablePush() {
         (UIApplication.shared.delegate as? AppDelegate)?.registerForNotifications(completion: { error in
             guard error == nil else {
@@ -104,6 +108,7 @@ final class SettingsViewModel: SettingsViewModelProtocol, ObservableObject {
         })
     }
     
+    /// A method that  \opens system settings for activating services
     func openSystemSettings() {
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
             return

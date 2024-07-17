@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A507A9132C416E6E0086D823 /* QueryInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C802C3FF51700E2A7D5 /* QueryInfoModel.swift */; };
+		A507A9132C416E6E0086D823 /* RequestInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C802C3FF51700E2A7D5 /* RequestInfoModel.swift */; };
 		A532FA552C43DEEF001D9ECB /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5537C692C3FC92000E2A7D5 /* NetworkExtension.framework */; };
 		A532FA582C43DEEF001D9ECB /* FilterControlProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A532FA572C43DEEF001D9ECB /* FilterControlProvider.swift */; };
 		A532FA5D2C43DEEF001D9ECB /* NTFilterControlExt.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A532FA542C43DEEF001D9ECB /* NTFilterControlExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -22,7 +22,7 @@
 		A5537C582C3FC85600E2A7D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5537C572C3FC85600E2A7D5 /* Assets.xcassets */; };
 		A5537C5B2C3FC85600E2A7D5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A5537C5A2C3FC85600E2A7D5 /* Base */; };
 		A5537C7F2C3FF31500E2A7D5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C7E2C3FF31500E2A7D5 /* MainViewModel.swift */; };
-		A5537C812C3FF51700E2A7D5 /* QueryInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C802C3FF51700E2A7D5 /* QueryInfoModel.swift */; };
+		A5537C812C3FF51700E2A7D5 /* RequestInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C802C3FF51700E2A7D5 /* RequestInfoModel.swift */; };
 		A5537C882C3FFDF100E2A7D5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C872C3FFDF100E2A7D5 /* EmptyView.swift */; };
 		A5537C8A2C3FFEBA00E2A7D5 /* EmptyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C892C3FFEBA00E2A7D5 /* EmptyDataSource.swift */; };
 		A5537C8D2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C8C2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift */; };
@@ -101,7 +101,7 @@
 		A5537C622C3FC8A200E2A7D5 /* NetworkTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NetworkTracker.entitlements; sourceTree = "<group>"; };
 		A5537C692C3FC92000E2A7D5 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		A5537C7E2C3FF31500E2A7D5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		A5537C802C3FF51700E2A7D5 /* QueryInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryInfoModel.swift; sourceTree = "<group>"; };
+		A5537C802C3FF51700E2A7D5 /* RequestInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInfoModel.swift; sourceTree = "<group>"; };
 		A5537C872C3FFDF100E2A7D5 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		A5537C892C3FFEBA00E2A7D5 /* EmptyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataSource.swift; sourceTree = "<group>"; };
 		A5537C8C2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				A5C1E8EE2C4018E3009CF48B /* Managed Objects */,
-				A5537C802C3FF51700E2A7D5 /* QueryInfoModel.swift */,
+				A5537C802C3FF51700E2A7D5 /* RequestInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -511,7 +511,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A59A2C8A2C467C5F0025ECAD /* AppDelegate+Notifications .swift in Sources */,
-				A5537C812C3FF51700E2A7D5 /* QueryInfoModel.swift in Sources */,
+				A5537C812C3FF51700E2A7D5 /* RequestInfoModel.swift in Sources */,
 				A59A2C2A2C44F9190025ECAD /* Constants.swift in Sources */,
 				A5537C7F2C3FF31500E2A7D5 /* MainViewModel.swift in Sources */,
 				A5C1E8EA2C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift in Sources */,
@@ -537,7 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A507A9132C416E6E0086D823 /* QueryInfoModel.swift in Sources */,
+				A507A9132C416E6E0086D823 /* RequestInfoModel.swift in Sources */,
 				A5CB71E22C411D6100E0367E /* QueryInfoEntity+CoreDataClass.swift in Sources */,
 				A5CB71D72C411D4200E0367E /* FilterDataProvider.swift in Sources */,
 				A5CB71E32C411D6300E0367E /* QueryInfoEntity+CoreDataProperties.swift in Sources */,

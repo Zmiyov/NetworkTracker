@@ -12,7 +12,7 @@ import NetworkExtension
 final class MainViewController: UIViewController {
     
     private enum MainScreenCellIdentifiers: String {
-        case queriesInfoListCell
+        case requestInfoListCell
     }
     enum Section: CaseIterable {
         case main
@@ -27,13 +27,13 @@ final class MainViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.alwaysBounceVertical = true
         collectionView.register(InfoCollectionViewCell.self,
-                                forCellWithReuseIdentifier: MainScreenCellIdentifiers.queriesInfoListCell.rawValue)
+                                forCellWithReuseIdentifier: MainScreenCellIdentifiers.requestInfoListCell.rawValue)
         return collectionView
     }()
     
-    private var dataSource: UICollectionViewDiffableDataSource<Section, QueryInfoModel>!
-    private var filteredItemsSnapshot: NSDiffableDataSourceSnapshot<Section, QueryInfoModel> {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, QueryInfoModel>()
+    private var dataSource: UICollectionViewDiffableDataSource<Section, RequestInfoModel>!
+    private var filteredItemsSnapshot: NSDiffableDataSourceSnapshot<Section, RequestInfoModel> {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, RequestInfoModel>()
         snapshot.appendSections([.main])
         snapshot.appendItems([])
         return snapshot
@@ -58,23 +58,15 @@ final class MainViewController: UIViewController {
         configureCollectionView()
         bindViewModel()
         createDataSource()
-        loadItems()
+        loadAllRequests()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.loadItems), name: Constants.ObservableNotification.appBecameActive.name, object: nil)
+        ///Observer that waits for notification when the app become active to reload items
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.loadAllRequests), name: Constants.ObservableNotification.appBecameActive.name, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-//        NEFilterManager.shared().loadFromPreferences { [weak self] error in
-//            guard let self else { return }
-//            if let loadError = error {
-//                showWarning(title: "Error loading preferences", body: "\(loadError)")
-//                return
-//            }
-//            checkIfServiceActive()
-//        }
-        
+        ///Cheking state of filter service
         mainScreenViewModel.checkFilterService { [weak self] in
             guard let self else { return }
             checkIfServiceActive()
@@ -99,6 +91,7 @@ final class MainViewController: UIViewController {
         collectionView.delegate = self
     }
     
+    ///Binnding viewmodel to view using Combine
     private func bindViewModel() {
         mainScreenViewModel.items
             .receive(on: RunLoop.main)
@@ -120,9 +113,10 @@ final class MainViewController: UIViewController {
     }
     
     @objc
-    private func loadItems() {
+    /// Loads all requests and shows alert with error description
+    private func loadAllRequests() {
         do {
-            try mainScreenViewModel.getAllItems()
+            try mainScreenViewModel.getAllRequests()
         } catch {
             showWarning(title: "Error", body: "Fetching error")
         }
@@ -137,11 +131,12 @@ final class MainViewController: UIViewController {
     }
     
     @objc
+    /// Shows alert with two options: cancel and delete all. Can throw an error if deleting is failed.
     private func clearList() {
         showAlertWithAction(title: "Delete All", body: "Do you want to delete all items?", actionButtonTitle: "Delete All", actionBlock:  { [weak self] in
             guard let self else { return }
             do {
-                try mainScreenViewModel.deleteAllItems()
+                try mainScreenViewModel.deleteAllRequests()
             } catch {
                 showWarning(title: "Error", body: "Deleting error")
             }
@@ -149,6 +144,7 @@ final class MainViewController: UIViewController {
   
     }
     
+    /// Shows an alert that offer open settings if network filter is disabled
     private func checkIfServiceActive() {
         if mainScreenViewModel.filterServiceStatus() == false {
             showAlertWithAction(title: "Filter is disabled", body: "Change state in the settings", actionButtonTitle: "Settings", actionBlock:  { [weak self] in
@@ -164,8 +160,8 @@ final class MainViewController: UIViewController {
 extension MainViewController {
     
     private func createDataSource() {
-        dataSource = EmptyableDiffableDataSource<Section, QueryInfoModel>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, infoModel) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainScreenCellIdentifiers.queriesInfoListCell.rawValue, for: indexPath) as? InfoCollectionViewCell
+        dataSource = EmptyableDiffableDataSource<Section, RequestInfoModel>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, infoModel) -> UICollectionViewCell? in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainScreenCellIdentifiers.requestInfoListCell.rawValue, for: indexPath) as? InfoCollectionViewCell
             cell?.configureCell(with: infoModel)
             cell?.delegate = self
             return cell
@@ -176,8 +172,8 @@ extension MainViewController {
         dataSource.apply(filteredItemsSnapshot)
     }
     
-    private func updateCollectionView(with items: [QueryInfoModel]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, QueryInfoModel>()
+    private func updateCollectionView(with items: [RequestInfoModel]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, RequestInfoModel>()
         snapshot.appendSections([.main])
         snapshot.appendItems(items)
         dataSource.apply(snapshot, animatingDifferences: true)
@@ -197,11 +193,12 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - MyCollectionViewCellDelegate
 
 extension MainViewController: MyCollectionViewCellDelegate {
+    /// Shows alert with two options: cancel and delete. Can throw an error if deleting is failed.
     func didTapDeleteButton(in cell: InfoCollectionViewCell, id: String) {
         showAlertWithAction(title: "Delete", body: "Do you want to delete the item?", actionButtonTitle: "Delete", actionBlock:  { [weak self] in
             guard let self else { return }
             do {
-                try mainScreenViewModel.deleteItem(with: id)
+                try mainScreenViewModel.deleteRequest(with: id)
             } catch {
                 showWarning(title: "Error", body: "Deleting error")
             }

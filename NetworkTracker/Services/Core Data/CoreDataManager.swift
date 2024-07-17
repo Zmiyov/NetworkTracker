@@ -8,7 +8,8 @@
 import CoreData
 import Combine
 
-class CoreDataManager {
+/// Class that manage operations with Core Data
+final class CoreDataManager {
 
     private var cancellables: Set<AnyCancellable> = []
     
@@ -20,25 +21,20 @@ class CoreDataManager {
     
     let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "NetworkTracker")
-        
         guard let appGroupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Constants.appGroupIdentifier) else {
             fatalError("Unable to find container URL for app group identifier")
         }
-        
         let storeURL = appGroupURL.appendingPathComponent("qdata").appendingPathComponent("db.sqlite")
         let storeDescription = NSPersistentStoreDescription(url: storeURL)
-        
         storeDescription.shouldMigrateStoreAutomatically = true
         storeDescription.shouldInferMappingModelAutomatically = true
         
         container.persistentStoreDescriptions = [storeDescription]
-        
         container.loadPersistentStores { storeDescription, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         }
-        
         return container
     }()
     
@@ -46,6 +42,7 @@ class CoreDataManager {
         return persistentContainer.viewContext
     }
     
+    /// Obseves changes in database and post notification using NotificationCenter if they are
     private func observeChanges() {
         NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave, object: managedObjectContext)
             .sink {  _ in
@@ -54,9 +51,11 @@ class CoreDataManager {
             .store(in: &cancellables)
     }
     
-    func fetchAll() throws -> [QueryInfoEntity] {
-        var requests: [QueryInfoEntity] = []
-        let request: NSFetchRequest<QueryInfoEntity> = QueryInfoEntity.fetchRequest()
+    /// Fetch all saved entities from Core Data
+    /// - Returns: Array of RequestInfoEntity
+    func fetchAll() throws -> [RequestInfoEntity] {
+        var requests: [RequestInfoEntity] = []
+        let request: NSFetchRequest<RequestInfoEntity> = RequestInfoEntity.fetchRequest()
 
         try performAndWait {
             requests = try self.managedObjectContext.fetch(request)
@@ -64,17 +63,19 @@ class CoreDataManager {
         
         return requests
     }
-
-    func addRequest(requestText: String, requestDate: Date, websiteLink: String) throws {
+    
+    /// Add a new request to a database
+    func addRequestToDatabase(requestText: String, requestDate: Date, websiteLink: String) throws {
         let context = self.managedObjectContext
         try performAndWait {
-            let query = QueryInfoEntity(requestText: requestText, requestDate: requestDate, websiteLink: websiteLink, helper: context)
+            let query = RequestInfoEntity(requestText: requestText, requestDate: requestDate, websiteLink: websiteLink, helper: context)
             print(query)
         }
         try saveContext(context: context)
     }
     
-    func delete(request: QueryInfoEntity) throws  {
+    /// Delete a certain request from a database
+    func delete(request: RequestInfoEntity) throws  {
         let context = self.managedObjectContext
         try performAndWait {
             context.delete(request)
@@ -82,9 +83,10 @@ class CoreDataManager {
         try saveContext(context: context)
     }
     
-    func deleteAllItems() throws {
+    /// Delete all requests from a database
+    func deleteAllRequests() throws {
         let context = self.managedObjectContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "QueryInfoEntity")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "RequestInfoEntity")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         try performAndWait {
             try context.execute(deleteRequest)
@@ -92,13 +94,15 @@ class CoreDataManager {
         }
     }
     
-    func fetchItem(withID id: String) throws -> QueryInfoEntity? {
+    /// Fetch a certain request from a database
+    func fetchRequest(withID id: String) throws -> RequestInfoEntity? {
         let allItems = try fetchAll()
         let filteredItem = allItems.filter { $0.id == id }.first
         return filteredItem
     }
     
-    //MARK: Internals
+    
+    /// A private instance method that executes a given closure within the context of the managed object context, ensuring that any errors thrown by the closure are properly propagated.
     private func performAndWait(fn:@escaping (() throws -> Void)) throws {
         var caughtError:Error?
         
@@ -115,7 +119,8 @@ class CoreDataManager {
         }
     }
     
-    //MARK: - Core Data Saving/Roll back support
+    //MARK: - Core Data Saving
+    /// A method that saves the managed object context
     func saveContext(context: NSManagedObjectContext) throws {
         var caughtError:Error?
         

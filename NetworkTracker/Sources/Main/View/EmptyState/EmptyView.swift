@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A view for empty state when there are no models in datasource
 final class EmptyView: UIView {
     
     private let imageView: UIImageView = {

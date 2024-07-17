@@ -1,5 +1,5 @@
 //
-//  QueryInfoEntity+CoreDataProperties.swift
+//  RequestInfoEntity+CoreDataProperties.swift
 //  NetworkTracker
 //
 //  Created by Volodymyr Pysarenko on 11.07.2024.
@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension QueryInfoEntity {
+extension RequestInfoEntity {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<QueryInfoEntity> {
-        return NSFetchRequest<QueryInfoEntity>(entityName: "QueryInfoEntity")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<RequestInfoEntity> {
+        return NSFetchRequest<RequestInfoEntity>(entityName: "RequestInfoEntity")
     }
     
     @NSManaged public var id: String?
@@ -23,11 +23,12 @@ extension QueryInfoEntity {
 
 }
 
-extension QueryInfoEntity : Identifiable {
+extension RequestInfoEntity : Identifiable {
 
 }
 
-extension QueryInfoEntity {
+extension RequestInfoEntity {
+    /// Additional initializator for creating RequestInfoEntity
     convenience init(requestText: String, requestDate: Date, websiteLink: String, helper context:NSManagedObjectContext) {
         self.init(helper: context)
         
@@ -38,6 +39,6 @@ extension QueryInfoEntity {
     }
     
     convenience init(helper context: NSManagedObjectContext) {
-        self.init(entity: NSEntityDescription.entity(forEntityName: "QueryInfoEntity", in: context)!, insertInto: context)
+        self.init(entity: NSEntityDescription.entity(forEntityName: "RequestInfoEntity", in: context)!, insertInto: context)
     }
 }

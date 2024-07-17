@@ -13,20 +13,12 @@ extension AppDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.banner, .sound])
     }
-    
-    func showEditController(for appIdentifier:String) {
-        NotificationCenter.default.post(name: Constants.ObservableNotification.editAction.name, object: appIdentifier)
-    }
-    
-    static func removeNotifications(for appIdentifier:String) {
-        UNUserNotificationCenter.current().getDeliveredNotifications { notes in
-            let ids = notes.filter { $0.request.content.threadIdentifier == appIdentifier }.map { $0.request.identifier }
-            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ids)
-        }
-    }
 }
-class Notifications {
-    static var authorizeCategory:UNNotificationCategory = {
+
+/// Class that provides default notification category value
+final class Notifications {
+    /// UNNotificationCategory for notification authorization 
+    static var authorizeCategory: UNNotificationCategory = {
         return UNNotificationCategory(identifier: Constants.notificationCategory,
                                       actions: [],
                                       intentIdentifiers: [],

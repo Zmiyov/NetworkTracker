@@ -11,6 +11,7 @@ protocol MyCollectionViewCellDelegate: AnyObject {
     func didTapDeleteButton(in cell: InfoCollectionViewCell, id: String)
 }
 
+/// A cell that display requests data
 final class InfoCollectionViewCell: UICollectionViewCell {
     
     private enum Constants {
@@ -41,13 +42,13 @@ final class InfoCollectionViewCell: UICollectionViewCell {
     
     weak var delegate: MyCollectionViewCellDelegate?
     
-    private var infoModelID: String?
+    private var requestInfoModelId: String?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
         setConstraints()
-        setupButton()
+        setupDeleteButton()
     }
 
     @available(*, unavailable)
@@ -64,11 +65,12 @@ final class InfoCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        ///shadow for cell
         containerView.drawShadow()
     }
     
-    func configureCell(with info: QueryInfoModel) {
-        self.infoModelID = info.id
+    func configureCell(with info: RequestInfoModel) {
+        self.requestInfoModelId = info.id
         self.queryLabel.text = info.text
         self.dateLabel.text = info.date
         self.linkLabel.text = info.url ?? "No link data"
@@ -78,16 +80,22 @@ final class InfoCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .clear
     }
     
-    private func setupButton() {
+    private func setupDeleteButton() {
         let deleteAction = UIAction { [weak self] action in
-            guard let self, let infoModelID else { return }
-            delegate?.didTapDeleteButton(in: self, id: infoModelID)
+            guard let self, let requestInfoModelId else { return }
+            delegate?.didTapDeleteButton(in: self, id: requestInfoModelId)
         }
         
         deleteButton.addAction(deleteAction, for: .touchUpInside)
     }
     
     private func setConstraints() {
+        /// Constants for setting up constraints
+        /// - Properties:
+        /// - containerInset: inset for all sides of containerView
+        /// - buttonSize: width and heigth of the deleteButton
+        /// - verticalInset: common vertical inset for elements
+        /// - horizontalInset: common horizontal inset for elements
         enum ConstraintConstants {
             static let containerInset: CGFloat = 10
             static let verticalInset: CGFloat = 15
