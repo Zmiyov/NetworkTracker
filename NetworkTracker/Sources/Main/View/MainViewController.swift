@@ -26,7 +26,7 @@ final class MainViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.alwaysBounceVertical = true
-        collectionView.register(InfoCollectionViewCell.self,
+        collectionView.register(RequestInfoCollectionViewCell.self,
                                 forCellWithReuseIdentifier: MainScreenCellIdentifiers.requestInfoListCell.rawValue)
         return collectionView
     }()
@@ -91,7 +91,7 @@ final class MainViewController: UIViewController {
         collectionView.delegate = self
     }
     
-    ///Binnding viewmodel to view using Combine
+    ///Binding viewmodel to view using Combine
     private func bindViewModel() {
         mainScreenViewModel.items
             .receive(on: RunLoop.main)
@@ -161,7 +161,7 @@ extension MainViewController {
     
     private func createDataSource() {
         dataSource = EmptyableDiffableDataSource<Section, RequestInfoModel>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, infoModel) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainScreenCellIdentifiers.requestInfoListCell.rawValue, for: indexPath) as? InfoCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainScreenCellIdentifiers.requestInfoListCell.rawValue, for: indexPath) as? RequestInfoCollectionViewCell
             cell?.configureCell(with: infoModel)
             cell?.delegate = self
             return cell
@@ -194,7 +194,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 
 extension MainViewController: MyCollectionViewCellDelegate {
     /// Shows alert with two options: cancel and delete. Can throw an error if deleting is failed.
-    func didTapDeleteButton(in cell: InfoCollectionViewCell, id: String) {
+    func didTapDeleteButton(in cell: RequestInfoCollectionViewCell, id: String) {
         showAlertWithAction(title: "Delete", body: "Do you want to delete the item?", actionButtonTitle: "Delete", actionBlock:  { [weak self] in
             guard let self else { return }
             do {

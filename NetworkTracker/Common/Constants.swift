@@ -9,10 +9,10 @@ import Foundation
 
 /// Struct that contains constants for the app
 ///   - Parameters:
-///   - requestFilter: A String representing the domain to filter network requests
-///   - appGroupIdentifier:  A String that used as a group identifier in the whole app
-///   - notificationCategory: A String defining the notification category identifier
-///   - pushActivityKey: A String key used for push activity notifications
+///     - requestFilter: A String representing the domain to filter network requests
+///     - appGroupIdentifier:  A String that used as a group identifier in the whole app
+///     - notificationCategory: A String defining the notification category identifier
+///     - pushActivityKey: A String key used for push activity notifications
 struct Constants {
     static let requestFilter = "google.com"
     static let appGroupIdentifier = "group.com.pysarenkodev.NetworkTracker"

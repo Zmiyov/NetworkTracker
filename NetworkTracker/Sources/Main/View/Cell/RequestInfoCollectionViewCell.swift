@@ -1,5 +1,5 @@
 //
-//  InfoCollectionViewCell.swift
+//  RequestInfoCollectionViewCell.swift
 //  NetworkTracker
 //
 //  Created by Volodymyr Pysarenko on 11.07.2024.
@@ -8,11 +8,11 @@
 import UIKit
 
 protocol MyCollectionViewCellDelegate: AnyObject {
-    func didTapDeleteButton(in cell: InfoCollectionViewCell, id: String)
+    func didTapDeleteButton(in cell: RequestInfoCollectionViewCell, id: String)
 }
 
-/// A cell that display requests data
-final class InfoCollectionViewCell: UICollectionViewCell {
+/// A  CollectionViewCell that display requests data on main screen
+final class RequestInfoCollectionViewCell: UICollectionViewCell {
     
     private enum Constants {
         static let linkFontSize: CGFloat = 17

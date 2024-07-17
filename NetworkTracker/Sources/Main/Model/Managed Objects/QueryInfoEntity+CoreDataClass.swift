@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(QueryInfoEntity)
+@objc(RequestInfoEntity)
 public class RequestInfoEntity: NSManagedObject {
 
 }

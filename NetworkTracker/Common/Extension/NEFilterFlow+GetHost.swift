@@ -9,7 +9,6 @@ import Foundation
 import NetworkExtension
 
 extension NEFilterFlow {
-    
     /// Function retrieves the host from a URL or an appropriate identifier from a network flow.
     /// - Returns: Returns an optional String containing the host or identifier of the network flow.
     func getHost() -> String? {

@@ -12,9 +12,9 @@ import Combine
 final class SettingsViewController: UIViewController {
     
     /// Constants for adjusting interface parameters
-    /// - Parameters
-    /// - fontSize: Labels font size
-    /// - verticalSpacing: space between rows
+    /// - Parameters:
+    ///   - fontSize: Labels font size
+    ///   - verticalSpacing: space between rows
     private enum Constants {
         static let fontSize: CGFloat = 17
         static let verticalSpacing: CGFloat = 10

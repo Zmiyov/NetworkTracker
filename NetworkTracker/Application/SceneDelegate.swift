@@ -19,8 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
 
-        let viewModel = MainScreenViewModel()
-        let viewController = MainViewController(mainScreenViewModel: viewModel)
+        let safetyViewModel = SafetyViewModel()
+        let viewController = SafetyViewController(safetyScreenViewModel: safetyViewModel)
         let navController = UINavigationController(rootViewController: viewController)
         
         window.rootViewController = navController

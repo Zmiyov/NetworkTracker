@@ -25,7 +25,7 @@
 		A5537C812C3FF51700E2A7D5 /* RequestInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C802C3FF51700E2A7D5 /* RequestInfoModel.swift */; };
 		A5537C882C3FFDF100E2A7D5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C872C3FFDF100E2A7D5 /* EmptyView.swift */; };
 		A5537C8A2C3FFEBA00E2A7D5 /* EmptyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C892C3FFEBA00E2A7D5 /* EmptyDataSource.swift */; };
-		A5537C8D2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C8C2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift */; };
+		A5537C8D2C3FFF2F00E2A7D5 /* RequestInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C8C2C3FFF2F00E2A7D5 /* RequestInfoCollectionViewCell.swift */; };
 		A5537C8F2C40010800E2A7D5 /* UILabel+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */; };
 		A5537C932C40016100E2A7D5 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5537C922C40016100E2A7D5 /* UIView+Shadow.swift */; };
 		A59A2C2A2C44F9190025ECAD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C292C44F9190025ECAD /* Constants.swift */; };
@@ -41,6 +41,8 @@
 		A59A2C882C467ABE0025ECAD /* NEFilterFlow+GetHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C862C467ABE0025ECAD /* NEFilterFlow+GetHost.swift */; };
 		A59A2C8A2C467C5F0025ECAD /* AppDelegate+Notifications .swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C892C467C5F0025ECAD /* AppDelegate+Notifications .swift */; };
 		A59A2C922C4689D10025ECAD /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C912C4689D10025ECAD /* SettingsViewModel.swift */; };
+		A59A2C992C47F7BB0025ECAD /* SafetyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C982C47F7BB0025ECAD /* SafetyViewController.swift */; };
+		A59A2C9C2C4815FA0025ECAD /* SafetyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A2C9B2C4815FA0025ECAD /* SafetyViewModel.swift */; };
 		A5C1E8EA2C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E82C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift */; };
 		A5C1E8EB2C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */; };
 		A5CB71D42C411D4200E0367E /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5537C692C3FC92000E2A7D5 /* NetworkExtension.framework */; };
@@ -104,7 +106,7 @@
 		A5537C802C3FF51700E2A7D5 /* RequestInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInfoModel.swift; sourceTree = "<group>"; };
 		A5537C872C3FFDF100E2A7D5 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		A5537C892C3FFEBA00E2A7D5 /* EmptyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataSource.swift; sourceTree = "<group>"; };
-		A5537C8C2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		A5537C8C2C3FFF2F00E2A7D5 /* RequestInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5537C8E2C40010800E2A7D5 /* UILabel+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+init.swift"; sourceTree = "<group>"; };
 		A5537C922C40016100E2A7D5 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		A59A2C292C44F9190025ECAD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -113,6 +115,8 @@
 		A59A2C862C467ABE0025ECAD /* NEFilterFlow+GetHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEFilterFlow+GetHost.swift"; sourceTree = "<group>"; };
 		A59A2C892C467C5F0025ECAD /* AppDelegate+Notifications .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications .swift"; sourceTree = "<group>"; };
 		A59A2C912C4689D10025ECAD /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		A59A2C982C47F7BB0025ECAD /* SafetyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyViewController.swift; sourceTree = "<group>"; };
+		A59A2C9B2C4815FA0025ECAD /* SafetyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyViewModel.swift; sourceTree = "<group>"; };
 		A5C1E8E82C4018DB009CF48B /* QueryInfoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryInfoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A5C1E8E92C4018DB009CF48B /* QueryInfoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryInfoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A5CB71D32C411D4200E0367E /* NTFilterDataExt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NTFilterDataExt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,6 +255,7 @@
 		A5537C7C2C3FCAB200E2A7D5 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A59A2C962C47F79A0025ECAD /* Safety */,
 				A59A2C2D2C44FD3A0025ECAD /* Main */,
 				A59A2C2E2C44FD480025ECAD /* Settings */,
 			);
@@ -290,7 +295,7 @@
 		A5537C8B2C3FFEEB00E2A7D5 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				A5537C8C2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift */,
+				A5537C8C2C3FFF2F00E2A7D5 /* RequestInfoCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -299,8 +304,8 @@
 			isa = PBXGroup;
 			children = (
 				A5537C772C3FC9D400E2A7D5 /* Model */,
-				A5537C792C3FC9E400E2A7D5 /* ViewModel */,
 				A5537C782C3FC9DE00E2A7D5 /* View */,
+				A5537C792C3FC9E400E2A7D5 /* ViewModel */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -308,8 +313,8 @@
 		A59A2C2E2C44FD480025ECAD /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				A59A2C902C4689BA0025ECAD /* ViewModel */,
 				A59A2C8F2C4689B00025ECAD /* View */,
+				A59A2C902C4689BA0025ECAD /* ViewModel */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -326,6 +331,31 @@
 			isa = PBXGroup;
 			children = (
 				A59A2C912C4689D10025ECAD /* SettingsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A59A2C962C47F79A0025ECAD /* Safety */ = {
+			isa = PBXGroup;
+			children = (
+				A59A2C972C47F7A40025ECAD /* View */,
+				A59A2C9A2C4815DF0025ECAD /* ViewModel */,
+			);
+			path = Safety;
+			sourceTree = "<group>";
+		};
+		A59A2C972C47F7A40025ECAD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A59A2C982C47F7BB0025ECAD /* SafetyViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A59A2C9A2C4815DF0025ECAD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A59A2C9B2C4815FA0025ECAD /* SafetyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -510,6 +540,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A59A2C992C47F7BB0025ECAD /* SafetyViewController.swift in Sources */,
 				A59A2C8A2C467C5F0025ECAD /* AppDelegate+Notifications .swift in Sources */,
 				A5537C812C3FF51700E2A7D5 /* RequestInfoModel.swift in Sources */,
 				A59A2C2A2C44F9190025ECAD /* Constants.swift in Sources */,
@@ -519,11 +550,12 @@
 				A5D790112C42833700AFCA2E /* CoreDataManager.swift in Sources */,
 				A5537C8A2C3FFEBA00E2A7D5 /* EmptyDataSource.swift in Sources */,
 				A5537C502C3FC85400E2A7D5 /* MainViewController.swift in Sources */,
+				A59A2C9C2C4815FA0025ECAD /* SafetyViewModel.swift in Sources */,
 				A5537C932C40016100E2A7D5 /* UIView+Shadow.swift in Sources */,
 				A5537C562C3FC85400E2A7D5 /* NetworkTracker.xcdatamodeld in Sources */,
 				A5537C4C2C3FC85400E2A7D5 /* AppDelegate.swift in Sources */,
 				A59A2C872C467ABE0025ECAD /* NEFilterFlow+GetHost.swift in Sources */,
-				A5537C8D2C3FFF2F00E2A7D5 /* InfoCollectionViewCell.swift in Sources */,
+				A5537C8D2C3FFF2F00E2A7D5 /* RequestInfoCollectionViewCell.swift in Sources */,
 				A5537C882C3FFDF100E2A7D5 /* EmptyView.swift in Sources */,
 				A5537C8F2C40010800E2A7D5 /* UILabel+init.swift in Sources */,
 				A59A2C342C44FEA80025ECAD /* UIViewController+Alert.swift in Sources */,
