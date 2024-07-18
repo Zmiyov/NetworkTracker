@@ -1,4 +1,5 @@
 Configuration options:
+
 You can setup the project changing these properties in the Constants struct of the Constants file:
 1. requestFilter - A String representing the domain to filter network requests
 2. appGroupIdentifier - A String that used as a group identifier in the whole app
