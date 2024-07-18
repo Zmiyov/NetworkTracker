@@ -60,7 +60,6 @@ final class SafetyViewModel: SafetyViewModelProtocol {
         let viewModel = MainScreenViewModel()
         let viewController = MainViewController(mainScreenViewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.isNavigationBarHidden = true
         window.rootViewController = navigationController
         
         let options: UIView.AnimationOptions = .transitionCrossDissolve

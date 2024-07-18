@@ -11,7 +11,7 @@ import UserNotifications
 
 class FilterControlProvider: NEFilterControlProvider {
     
-    /// Logging for track processes in console
+    /// Logging for tracking processes in console
     private let log = OSLog(subsystem: "com.pysarenkodev.NTFilterControlExt", category: "general")
 
     override func startFilter(completionHandler: @escaping (Error?) -> Void) {

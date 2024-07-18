@@ -10,7 +10,7 @@ import OSLog
 
 class FilterDataProvider: NEFilterDataProvider {
     
-    /// Logging for track processes in console
+    /// Logging for tracking processes in console
     private let log = OSLog(subsystem: "com.pysarenkodev.NTFilterDataExt", category: "general")
 
     override func startFilter(completionHandler: @escaping (Error?) -> Void) {
