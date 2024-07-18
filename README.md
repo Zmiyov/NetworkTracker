@@ -1,12 +1,12 @@
 # Configuration options:
 
 You can setup the project changing these properties in the Constants struct of the Constants file:
-1. requestFilter - A String representing the domain to filter network requests
-2. appGroupIdentifier - A String that used as a group identifier in the whole app
+1. requestFilter - A String representing the domain to filter network requests.
+2. appGroupIdentifier - A String that used as a group identifier in the whole app.
 
 # Troubleshooting tips and common issues.
 If you don't recieve notifications or Face ID don't work you can try to turn them on in the system settings.
-Also you can handle state of notification and filtering services from settings in the app.
+Also you can handle a state of both notification and filtering services from settings in the app.
 
 # Brief overview of the code structure and important modules.
 
